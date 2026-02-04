@@ -20,7 +20,7 @@ jobs:
           git init
           git remote add origin https://github.com/Mick235711/Beijing-Subway-Tools.git
           git config core.sparseCheckout true
-          echo "data/Beijing/" >> .git/info/sparse-checkout
+          echo "data/beijing/" >> .git/info/sparse-checkout
           git pull origin main
           cd ..
 
@@ -28,8 +28,8 @@ jobs:
         id: compare
         run: |
           # 定义路径变量
-          SOURCE="temp_upstream/Beijing-Subway-Tools/data/Beijing"
-          DEST="/data/Beijing/"
+          SOURCE="temp_upstream/Beijing-Subway-Tools/data/beijing"
+          DEST="/data/beijing/"
 
           # 【核心对比命令】
           # diff -r 递归对比，-q 只报告是否有差异，--exclude 排除掉可能存在的 .git
