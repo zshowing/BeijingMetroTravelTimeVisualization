@@ -28,7 +28,7 @@ jobs:
         id: compare
         run: |
           # 定义路径变量
-          SOURCE="temp_upstream/data/Beijing"
+          SOURCE="/data/Beijing"
           DEST="assets/metro-data/"
           
           # 确保目标文件夹存在
