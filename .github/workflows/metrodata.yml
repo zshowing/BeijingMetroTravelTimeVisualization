@@ -31,10 +31,6 @@ jobs:
           SOURCE="temp_upstream/Beijing-Subway-Tools/data/Beijing"
           DEST="/data/Beijing/"
 
-          ls
-          # 确保目标文件夹存在
-          mkdir -p $DEST
-
           # 【核心对比命令】
           # diff -r 递归对比，-q 只报告是否有差异，--exclude 排除掉可能存在的 .git
           if diff -rq $SOURCE $DEST --exclude=".git"; then
