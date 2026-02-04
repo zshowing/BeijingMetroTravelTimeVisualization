@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>北京地铁等时线</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <div>
+          <h1 class="title">北京地铁等时线</h1>
+          <p class="subtitle">点击站点，动画展示 10-120 分钟等时线</p>
+        </div>
+      </div>
+      <div class="controls">
+        <input id="station-search" type="text" list="station-list" placeholder="搜索站点名称" />
+        <datalist id="station-list"></datalist>
+        <button class="button" id="random-btn">随机站点</button>
+        <label class="toggle">
+          <input type="checkbox" id="label-toggle" checked />
+          显示站名
+        </label>
+      </div>
+
+      <div class="layout">
+        <div class="map-wrap">
+          <img id="map-image" alt="Beijing Subway Map" />
+          <canvas id="contours"></canvas>
+          <svg id="stations"></svg>
+        </div>
+        <aside class="panel">
+          <div class="info">
+            <div><span class="badge" id="active-station">未选择站点</span></div>
+            <div id="active-lines"></div>
+            <div id="stats"></div>
+            <div id="debug" style="white-space: pre-line; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></div>
+          </div>
+          <hr style="border: none; border-top: 1px solid rgba(30,36,44,0.08); margin: 16px 0;" />
+          <div class="legend" id="legend"></div>
+          <div class="footnote">
+            说明：等时线为基于线路区间距离、设计速度与换乘时间的近似估算，实际出行时间会随时刻表与客流变化。
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
