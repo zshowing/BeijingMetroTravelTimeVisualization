@@ -28,7 +28,7 @@ jobs:
         id: compare
         run: |
           # 定义路径变量
-          SOURCE="temp_upstream/data/beijing"
+          SOURCE="temp_upstream/data/beijing/"
           DEST="data/beijing/"
           
           # 【核心对比命令】
@@ -40,7 +40,7 @@ jobs:
             echo "Differences detected!"
             # 同步文件内容
             rm -rf $DEST
-            cp -r $SOURCE. $DEST
+            cp -r $SOURCE* $DEST
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
