@@ -40,7 +40,6 @@ jobs:
             echo "Differences detected!"
             # 同步文件内容
             rm -rf $DEST
-            ls
             mkdir -p "$DEST"
             cp -r $SOURCE* $DEST
             echo "changed=true" >> $GITHUB_OUTPUT
