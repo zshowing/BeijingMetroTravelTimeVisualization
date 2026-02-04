@@ -30,7 +30,7 @@ jobs:
           # 定义路径变量
           SOURCE="temp_upstream/Beijing-Subway-Tools/data/beijing"
           DEST="/data/beijing/"
-
+          ls
           # 【核心对比命令】
           # diff -r 递归对比，-q 只报告是否有差异，--exclude 排除掉可能存在的 .git
           if diff -rq $SOURCE $DEST --exclude=".git"; then
