@@ -28,8 +28,8 @@ jobs:
         id: compare
         run: |
           # 定义路径变量
-          SOURCE="/data/Beijing"
-          DEST="assets/metro-data/"
+          SOURCE="Beijing-Subway-Tools/data/Beijing"
+          DEST="/data/Beijing/"
           
           # 确保目标文件夹存在
           mkdir -p $DEST
