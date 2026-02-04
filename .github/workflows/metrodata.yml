@@ -1,0 +1,57 @@
+name: Data Sync
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天凌晨检查一次
+  workflow_dispatch:
+
+jobs:
+  sync-and-compare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout My Repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MY_TOKEN }}
+
+      - name: Fetch Upstream (Sparse)
+        run: |
+          mkdir -p temp_upstream
+          cd temp_upstream
+          git init
+          git remote add origin https://github.com/Mick235711/Beijing-Subway-Tools.git
+          git config core.sparseCheckout true
+          echo "data/Beijing/" >> .git/info/sparse-checkout
+          git pull origin main
+          cd ..
+
+      - name: Compare and Update
+        id: compare
+        run: |
+          # 定义路径变量
+          SOURCE="temp_upstream/data/Beijing"
+          DEST="assets/metro-data/"
+          
+          # 确保目标文件夹存在
+          mkdir -p $DEST
+
+          # 【核心对比命令】
+          # diff -r 递归对比，-q 只报告是否有差异，--exclude 排除掉可能存在的 .git
+          if diff -rq $SOURCE $DEST --exclude=".git"; then
+            echo "No differences found."
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "Differences detected!"
+            # 同步文件内容
+            rm -rf $DEST
+            cp -r $SOURCE. $DEST
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and Push
+        if: steps.compare.outputs.changed == 'true'
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Auto-sync: 检测到上游目录内容更新"
+          git push
