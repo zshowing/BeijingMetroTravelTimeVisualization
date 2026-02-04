@@ -28,7 +28,7 @@ jobs:
         id: compare
         run: |
           # 定义路径变量
-          SOURCE="Beijing-Subway-Tools/data/Beijing"
+          SOURCE="temp_upstream/Beijing-Subway-Tools/data/Beijing"
           DEST="/data/Beijing/"
 
           ls
