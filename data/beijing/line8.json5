@@ -1,0 +1,2361 @@
+// 数据截止2025/11/14，八通线，大兴线完全并入1号线和4号线描述
+// 8号线时刻表 新10版
+{
+    name: "8号线",
+    color: "#009B77",
+    aliases: ["Line 8"],
+    carriage_num: 6,
+    carriage_type: "B",
+    design_speed: 80,
+    stations: [
+        {name: "朱辛庄"},
+        {name: "育知路", dist: 2319},
+        {name: "平西府", dist: 1986},
+        {name: "回龙观东大街", dist: 2017},
+        {name: "霍营", dist: 1115},
+        {name: "育新", dist: 1895},
+        {name: "西小口", dist: 1543},
+        {name: "永泰庄", dist: 1042},
+        {name: "林萃桥", dist: 2553},
+        {name: "森林公园南门", dist: 2558, aliases: ["Forest Park South Gate"]},
+        {name: "奥林匹克公园", dist: 1017, aliases: ["Olympic Park"]},
+        {name: "奥体中心", dist: 1667, aliases: ["Olympic Sports Center"]},
+        {name: "北土城", dist: 900},
+        {name: "安华桥", dist: 1009},
+        {name: "安德里北街", dist: 1275},
+        {name: "鼓楼大街", dist: 1084},
+        {name: "什刹海", dist: 1188},
+        {name: "南锣鼓巷", dist: 902},
+        {name: "中国美术馆", dist: 1437, aliases: ["National Art Museum"]},
+        {name: "金鱼胡同", dist: 873},
+        {name: "王府井", dist: 762},
+        {name: "前门", dist: 1857},
+        {name: "珠市口", dist: 1085},
+        {name: "天桥", dist: 881},
+        {name: "永定门外", dist: 1800},
+        {name: "木樨园", dist: 741},
+        {name: "海户屯", dist: 845},
+        {name: "大红门", dist: 853},
+        {name: "大红门南", dist: 825},
+        {name: "和义", dist: 2446},
+        {name: "东高地", dist: 1537},
+        {name: "火箭万源", dist: 1215},
+        {name: "五福堂", dist: 1684},
+        {name: "德茂", dist: 2076},
+        {name: "瀛海", dist: 1510}
+    ],
+    train_routes: {
+        "南行": {
+            aliases: ["Southbound"],
+            "全程车": {},
+            "回龙观东大街出库车": {starts_with: "回龙观东大街"},
+            "珠市口小交路": {ends_with: "珠市口"}
+        },
+        "北行": {
+            aliases: ["Northbound"],
+            reversed: true,
+            "全程车": {},
+            "回龙观东大街回库车": {ends_with: "回龙观东大街"},
+            "回龙观东大街出库车": {starts_with: "回龙观东大街"},
+            "中国美术馆始发空车": {starts_with: "中国美术馆"},
+            "珠市口始发空车": {starts_with: "珠市口"}
+        }
+    },
+    date_groups: {
+        "工作日": {weekday: [1, 2, 3, 4, 5], aliases: ["Weekdays"]},
+        "双休日": {weekday: [6, 7], aliases: ["Weekends"]}
+    },
+    timetable: {
+        "朱辛庄": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:09", delta: [[10, [7]], 5, 6, 3, 5, 6, 3, 2, 6, 3, 2, 6, 3]},
+                        {first_train: "07:14", delta: [3, 5, 3, 6, [3, [2, 6, 3]], 2, 3, 6, 2, 3, 3]},
+                        {first_train: "08:28", delta: [3, 3, 3, [5, [3, 4]], 4, 6, 6, 7, 8, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "14:58", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "19:29", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 6]},
+                        {first_train: "20:58", delta: [7, 5, [11, [6]], 7, 7, 10]}
+                    ],
+                    filters: []
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:09", delta: [[7, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]], [6, [5]], [3, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "18:57", delta: [6, 5, [5, [7]], 6, [2, [8, 7, 7, 7, 7, 7]], 7]},
+                        {first_train: "21:29", delta: [7, 8, 8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "珠市口小交路", first_train: "06:40", skip_trains: 3, until: "13:12"},
+                        {plan: "珠市口小交路", first_train: "13:48", skip_trains: 2, until: "19:03"}
+                    ]
+                }
+            },
+            "北行": {
+                // 以+3min计算
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:00", delta: [[9, [7]], 9, 6, 4, 6, 4, 6, 3, 5, 3, 4, 3, 4]},
+                        {first_train: "07:02", delta: [5, 5, [8, [4]], [13, [3, 4]], [8, [7]], 8, 5, 10, 10, 5]},
+                        {first_train: "10:54", delta: [10, 10, 4, 6, 10, 10, [12, [7, 8]], [5, [7, 5, 3]], 5]},
+                        {first_train: "16:06", delta: [5, 3, 4, 3, 5, 3, 5, 3, 7, [2, [4, 3, 5, 3]]]},
+                        {first_train: "17:19", delta: [5, 5, [7, [4]], 3, 3, 4, 3, 3, 7, 3, 3, 3, 4]},
+                        {first_train: "18:39", delta: [3, 4, 6, 7, 6, 7, 3, 6, 7, 6, 4, 3, 3, 3]},
+                        {first_train: "19:51", delta: [3, 6, 4, 6, 3, 4, 4, 7, 5, 8, 4, 8, 5, 5, [2, [5, 7, 6, 5, 7]]]},
+                        {first_train: "22:09", delta: [6, 5, [9, [6]], 8, 10, 9, 9, 9, 9, 10, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:00", until: "06:03"},
+                        {plan: "回龙观东大街出库车", first_train: "06:18", skip_trains: 1, until: "07:00"},
+                        {plan: "回龙观东大街出库车", first_train: "14:56", skip_trains: 2, count: 5},
+                        {plan: "回龙观东大街出库车", first_train: "16:04", skip_trains: 1, count: 5},
+                        {plan: "回龙观东大街出库车", first_train: "16:48", skip_trains: 1, count: 4},
+                        {plan: "中国美术馆始发空车", trains: ["06:12", "06:22"]}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:00", delta: [11, 11, 10, 11, 11, 9, 9, 6, 4, 10, 7, 4, 10, [3, [10, 6, 4]]]},
+                        {first_train: "08:03", delta: [8, 8, 7, 7, 7, 8, 6, [39, [7]], 4, 3, 7, 7]},
+                        {first_train: "13:52", delta: [3, 7, 5, 2, [2, [7, 7, 4, 3, 7, 4, 3]], 5, 7]},
+                        {first_train: "15:37", delta: [[2, [5, 5, 6, 4, 5]], [9, [5]], 6, 4, [12, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:56", delta: [6, 5, 7, 6, 8, 7, 8, 6, 9, 7, 8, 7, 8]},
+                        {first_train: "22:35", delta: [8, 8, 6, 8, 8, 7, 8, 7, 8, 7, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:00", until: "06:03"},
+                        {plan: "回龙观东大街出库车", trains: ["06:18", "06:39"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:09", skip_trains: 2, count: 3},
+                        {plan: "回龙观东大街出库车", trains: ["13:31", "13:52", "14:07", "14:27", "14:41", "15:02", "15:16"]},
+                        {plan: "中国美术馆始发空车", trains: ["06:12", "06:22"]},
+                        {plan: "珠市口始发空车", first_train: "08:40", skip_trains: 3, until: "13:20"},
+                        {plan: "珠市口始发空车", first_train: "13:48", skip_trains: 5, count: 3},
+                        {plan: "珠市口始发空车", trains: ["15:12"]},
+                        {plan: "珠市口始发空车", first_train: "15:47", skip_trains: 2, until: "21:02"}
+                    ]
+                }
+            }
+        },
+        "育知路": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:12", delta: [[10, [7]], 5, 6, 3, 6, 5, 3, 3, 5, 3, 3, 5, 3]},
+                        {first_train: "07:17", delta: [3, 6, 2, 6, [3, [3, 5, 3]], 3, 2, 6, 3, 2, 3]},
+                        {first_train: "08:32", delta: [2, 3, 3, [5, [3, 4]], 4, 7, 5, 8, 7, 9, 7, 7]},
+                        {first_train: "10:16", delta: [8, 8, 7, [17, [7, 8]], 7, [10, [5]], 4, 5, 3, [42, [4]]]},
+                        {first_train: "18:57", delta: [6, 7, 5, 6, 5, 6, 6, 5, 6, 7, 6, 6, 5, 5]},
+                        {first_train: "20:26", delta: [6, 6, 5, 6, 7, 6, 6, 6, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: []
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:12", delta: [[7, [10]], 7, 7, 7, 8, 6, [57, [7]], [8, [5]], [2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:11", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [8, [7]]]},
+                        {first_train: "21:47", delta: [8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "珠市口小交路", first_train: "06:43", skip_trains: 3, until: "13:15"},
+                        {plan: "珠市口小交路", first_train: "13:51", skip_trains: 2, until: "19:06"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:57", delta: [[9, [7]], 9, 6, 4, 6, 4, 6, 3, 5, 3, 4, 3, 4]},
+                        {first_train: "06:59", delta: [5, 5, [8, [4]], [13, [3, 4]], [8, [7]], 8, 5, 10, 10, 5]},
+                        {first_train: "10:51", delta: [10, 10, 4, 6, 10, 10, [12, [7, 8]], [5, [7, 5, 3]], 5]},
+                        {first_train: "16:03", delta: [5, 3, 4, 3, 5, 3, 5, 3, 7, [2, [4, 3, 5, 3]]]},
+                        {first_train: "17:16", delta: [5, 5, [7, [4]], 3, 3, 4, 3, 3, 7, 3, 3, 3, 4]},
+                        {first_train: "18:36", delta: [3, 4, 6, 7, 6, 7, 3, 6, 7, 6, 4, 3, 3, 3]},
+                        {first_train: "19:48", delta: [3, 6, 4, 6, 3, 4, 4, 7, 5, 8, 4, 8, 5, 5, [2, [5, 7, 6, 5, 7]]]},
+                        {first_train: "22:06", delta: [6, 5, [9, [6]], 8, 10, 9, 9, 9, 9, 10, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:57", until: "06:00"},
+                        {plan: "回龙观东大街出库车", first_train: "06:15", skip_trains: 1, until: "06:57"},
+                        {plan: "回龙观东大街出库车", first_train: "14:53", skip_trains: 2, count: 5},
+                        {plan: "回龙观东大街出库车", first_train: "16:01", skip_trains: 1, count: 5},
+                        {plan: "回龙观东大街出库车", first_train: "16:45", skip_trains: 1, count: 4},
+                        {plan: "中国美术馆始发空车", trains: ["06:09", "06:19"]}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:57", delta: [11, 11, 10, 11, 11, 9, 9, 6, 4, 10, 7, 4, 10, [3, [10, 6, 4]]]},
+                        {first_train: "08:00", delta: [8, 8, 7, 7, 7, 8, 6, [39, [7]], 4, 3, 7, 7]},
+                        {first_train: "13:49", delta: [3, 7, 5, 2, [2, [7, 7, 4, 3, 7, 4, 3]], 5, 7]},
+                        {first_train: "15:34", delta: [[2, [5, 5, 6, 4, 5]], [9, [5]], 6, 4, [12, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:53", delta: [6, 5, 7, 6, 8, 7, 8, 6, 9, 7, 8, 7, 8]},
+                        {first_train: "22:32", delta: [8, 8, 6, 8, 8, 7, 8, 7, 8, 7, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:57", until: "06:00"},
+                        {plan: "回龙观东大街出库车", trains: ["06:15", "06:36"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:06", skip_trains: 2, count: 3},
+                        {plan: "回龙观东大街出库车", trains: ["13:28", "13:49", "14:04", "14:24", "14:38", "14:59", "15:13"]},
+                        {plan: "中国美术馆始发空车", trains: ["06:09", "06:19"]},
+                        {plan: "珠市口始发空车", first_train: "08:37", skip_trains: 3, until: "13:17"},
+                        {plan: "珠市口始发空车", first_train: "13:45", skip_trains: 5, count: 3},
+                        {plan: "珠市口始发空车", trains: ["15:09"]},
+                        {plan: "珠市口始发空车", first_train: "15:44", skip_trains: 2, until: "20:59"}
+                    ]
+                }
+            }
+        },
+        "平西府": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:15", delta: [[10, [7]], 5, 6, 3, 6, 5, 3, 3, 5, 3, 3, 5, 3]},
+                        {first_train: "07:20", delta: [3, 6, 2, 6, [3, [3, 5, 3]], 3, 2, 6, 3, 2, 3]},
+                        {first_train: "08:35", delta: [2, 3, 3, [5, [3, 4]], 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:04", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "19:35", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "21:04", delta: [7, 5, [11, [6]], 7, 7, 10]}
+                    ],
+                    filters: []
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:15", delta: [[7, [10]], [62, [7]], [8, [5]], [2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:14", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [8, [7]]]},
+                        {first_train: "21:50", delta: [8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "珠市口小交路", first_train: "06:46", skip_trains: 3, until: "13:18"},
+                        {plan: "珠市口小交路", first_train: "13:54", skip_trains: 2, until: "19:09"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:54", delta: [[9, [7]], 9, 6, 4, 6, 4, 6, 3, 5, 3, 4, 3, 4]},
+                        {first_train: "06:56", delta: [5, 5, [9, [4]], [12, [3, 4]], 3, [8, [7]], 9, 5, 10, 10]},
+                        {first_train: "10:44", delta: [5, 9, 11, 4, 6, 10, 10, 7, [12, [7, 8]], [4, [5, 2, 8]]]},
+                        {first_train: "15:51", delta: [2, 5, 3, 5, 2, 4, 4, 5, 2, 5, 3, 7, 5]},
+                        {first_train: "16:46", delta: [4, 3, 5, 2, 5, 3, 5, 5, 5, [7, [4]], 3, 4, 3]},
+                        {first_train: "18:04", delta: [3, 7, 3, 3, 4, 3, 6, 4, 3, 6, [2, [7, 6, 7, 3]]]},
+                        {first_train: "19:35", delta: [3, 4, 3, 3, 7, 3, 6, 4, 3, 4, 7, 5, 8]},
+                        {first_train: "20:39", delta: [8, 5, 5, [2, [5, 7, 6, 5, 7]], 6, 6, 6, 5, 6]},
+                        {first_train: "22:33", delta: [[6, [6]], 7, 10, 9, 9, 9, 9, 10, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:54", until: "05:57"},
+                        {plan: "回龙观东大街出库车", first_train: "06:12", skip_trains: 1, until: "06:54"},
+                        {plan: "回龙观东大街出库车", first_train: "14:51", skip_trains: 2, count: 5},
+                        {plan: "回龙观东大街出库车", first_train: "15:58", skip_trains: 1, count: 5},
+                        {plan: "回龙观东大街出库车", first_train: "16:43", skip_trains: 1, count: 4},
+                        {plan: "中国美术馆始发空车", trains: ["06:06", "06:16"]}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:54", delta: [11, 11, 10, 12, 10, 10, 8, 6, 4, 10, 7, 4, 10, [3, [10, 6, 4]]]},
+                        {first_train: "07:57", delta: [8, 8, 7, 7, 7, 8, 6, [39, [7]], 4, 3, 7, 7]},
+                        {first_train: "13:46", delta: [3, 7, 5, 2, [2, [7, 7, 4, 3, 7, 4, 3]], 5, 7]},
+                        {first_train: "15:31", delta: [5, 5, 6, 4, [15, [5]], 6, 4, [12, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:50", delta: [6, 5, 7, 6, 8, 7, 8, 6, 9, 7, 8, 7, 8]},
+                        {first_train: "22:29", delta: [8, 8, 6, 8, 8, 7, 8, 7, 8, 7, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:54", until: "05:58"},
+                        {plan: "回龙观东大街出库车", trains: ["06:12", "06:33"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:03", skip_trains: 2, count: 3},
+                        {plan: "回龙观东大街出库车", trains: ["13:25", "13:46", "14:01", "14:21", "14:35", "14:56", "15:10"]},
+                        {plan: "中国美术馆始发空车", trains: ["06:06", "06:16"]},
+                        {plan: "珠市口始发空车", first_train: "08:34", skip_trains: 3, until: "13:14"},
+                        {plan: "珠市口始发空车", first_train: "13:42", skip_trains: 5, count: 3},
+                        {plan: "珠市口始发空车", trains: ["15:06"]},
+                        {plan: "珠市口始发空车", first_train: "15:41", skip_trains: 2, until: "20:56"}
+                    ]
+                }
+            }
+        },
+        "回龙观东大街": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:39", delta: [7, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "08:49", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:07", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "19:38", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "21:08", delta: [6, 6, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:39", until: "05:12"},
+                        {plan: "回龙观东大街出库车", trains: ["06:37", "06:45"]},
+                        {plan: "回龙观东大街出库车", first_train: "06:50", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:21", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["07:56"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:07", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:39", delta: [10, 10, 10, 9, [7, [10]], [62, [7]], [8, [5]], [2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:17", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [8, [7]]]},
+                        {first_train: "21:53", delta: [8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:39", count: 4},
+                        {plan: "珠市口小交路", first_train: "06:49", skip_trains: 3, until: "13:21"},
+                        {plan: "珠市口小交路", first_train: "13:57", skip_trains: 2, until: "19:12"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:51", delta: [[9, [7]], 9, 6, 4, 6, 4, 6, 3, 5, 3, 4, 3, 3]},
+                        {first_train: "06:53", delta: [5, 4, 5, [7, [4]], [21, [3, 4]], 3, [12, [5]], 4, 6, 5]},
+                        {first_train: "11:25", delta: [5, 5, [12, [7, 8]], [5, [7, 5, 3]], 5, 2, 5, 3, 4]},
+                        {first_train: "16:12", delta: [5, 3, 5, 3, 7, [2, [4, 3, 5, 3]], 5, 5, 5, [6, [4]]]},
+                        {first_train: "17:48", delta: [[10, [3, 3, 4, 3]], 3, 3, 4, 4, 4, 3, 5, [5, [4]]]},
+                        {first_train: "20:49", delta: [5, 5, 7, 5, 5, 8, 5, 7, 6, 5, 7, 5, 7, 5, [8, [6]]]},
+                        {first_train: "23:05", delta: [8, 10, 9, 9, 9, 9, 10, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:51", until: "05:54"},
+                        {plan: "回龙观东大街出库车", first_train: "06:09", skip_trains: 1, until: "06:50"},
+                        {plan: "回龙观东大街出库车", first_train: "14:47", skip_trains: 2, count: 5},
+                        {plan: "回龙观东大街出库车", first_train: "15:55", skip_trains: 1, count: 5},
+                        {plan: "回龙观东大街出库车", first_train: "16:39", skip_trains: 1, count: 4},
+                        {plan: "中国美术馆始发空车", trains: ["06:03", "06:13"]},
+                        {plan: "回龙观东大街回库车", first_train: "09:09", skip_trains: 1, until: "10:05"},
+                        {plan: "回龙观东大街回库车", trains: ["10:20", "10:30", "10:50", "11:00", "11:20", "11:30", "18:07", "18:27"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:40", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "19:09", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:48", "19:58"]},
+                        {plan: "回龙观东大街回库车", first_train: "20:16", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:51", delta: [11, 11, 10, 11, 11, 9, 9, 6, 4, 10, 7, 4, 10, [3, [10, 6, 4]]]},
+                        {first_train: "07:54", delta: [8, 8, 7, 7, 7, 8, 6, [39, [7]], 4, 3, 7, 7]},
+                        {first_train: "13:43", delta: [3, 7, 5, 2, [2, [7, 7, 4, 3, 7, 4, 3]], 5, 7]},
+                        {first_train: "15:28", delta: [[33, [5]], [5, [4, 6, 5, 5, 5, 5]], 4, 6, 5, 7, 6]},
+                        {first_train: "21:19", delta: [7, 8, 6, 9, 7, 8, 7, 8, 7, 8, 8, 6, 8, 8]},
+                        {first_train: "23:11", delta: [8, 7, 8, 7, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:51", until: "05:54"},
+                        {plan: "回龙观东大街出库车", trains: ["06:09", "06:30"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:00", skip_trains: 2, count: 3},
+                        {plan: "回龙观东大街出库车", trains: ["13:22", "13:43", "13:58", "14:18", "14:32", "14:53", "15:07"]},
+                        {plan: "中国美术馆始发空车", trains: ["06:03", "06:13"]},
+                        {plan: "珠市口始发空车", first_train: "08:31", skip_trains: 3, until: "13:11"},
+                        {plan: "珠市口始发空车", first_train: "13:39", skip_trains: 5, count: 3},
+                        {plan: "珠市口始发空车", trains: ["15:03"]},
+                        {plan: "珠市口始发空车", first_train: "15:38", skip_trains: 2, until: "20:53"}
+                    ]
+                }
+            }
+        },
+        "霍营": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:41", delta: [7, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [3, 2, 3, 3]]]},
+                        {first_train: "08:43", delta: [2, [5, [3, 4]], 3, 5, 6, 6, 7, 7, 9, 7, [20, [7, 8]]]},
+                        {first_train: "15:15", delta: [[9, [5]], [45, [4]], 6, 6, 6, [2, [6, 5, 5, 7]], [2, [7, 6, 5, 5, 7]]]},
+                        {first_train: "21:10", delta: [7, 5, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:41", until: "05:14"},
+                        {plan: "回龙观东大街出库车", trains: ["06:39", "06:47"]},
+                        {plan: "回龙观东大街出库车", first_train: "06:53", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:23", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["07:59"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:10", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:41", delta: [10, 10, 10, 9, 10, 11, 9, 10, 10, 10, 10, 7, 7, 7]},
+                        {first_train: "06:59", delta: [6, [57, [7]], [8, [5]], [2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:19", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [8, [7]]]},
+                        {first_train: "21:55", delta: [8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:41", count: 4},
+                        {plan: "珠市口小交路", first_train: "06:51", skip_trains: 3, until: "13:23"},
+                        {plan: "珠市口小交路", first_train: "13:59", skip_trains: 2, until: "19:14"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "06:01", delta: [10, 10, 9, 7, 7, 7, 5, [10, [4]], [21, [3, 4]], [12, [5]]]},
+                        {first_train: "11:07", delta: [6, 5, 5, 5, 5, 7, [21, [7, 8]], 7, 5, 5, 5, [7, [4]]]},
+                        {first_train: "17:49", delta: [[10, [3, 3, 3, 4]], 3, 3, [7, [4]], 5, 4, 5, 4, 6]},
+                        {first_train: "21:03", delta: [6, 5, 7, [17, [6]], 8, [5, [9]], 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["06:01", "06:11"]},
+                        {plan: "回龙观东大街回库车", first_train: "09:07", skip_trains: 1, until: "10:03"},
+                        {plan: "回龙观东大街回库车", trains: ["10:18", "10:28", "10:48", "10:58", "11:18", "11:28", "18:05", "18:24"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:37", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "19:07", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:46", "19:55"]},
+                        {plan: "回龙观东大街回库车", first_train: "20:13", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "06:01", delta: [10, 10, [2, [11, 10, 10, 9]], 11, 8, [3, [8, 7, 7, 7, 7, 6]]]},
+                        {first_train: "10:14", delta: [[2, [6, 8, 7, 7, 7, 7, 7, 7]], 7, 7, 7, 6]},
+                        {first_train: "12:41", delta: [[7, [7]], 6, 8, 7, 7, 6, 7, 8, 7, 6, 8, 7, 7]},
+                        {first_train: "15:01", delta: [7, 5, 7, 6, [15, [5]], 4, 6, [11, [5]], 4, 6, 5, 5, 5, 4, 6, 5, 5]},
+                        {first_train: "18:36", delta: [[2, [5, 4, 6, 5, 5, 5]], 4, 5, [2, [6, 5, 5, 5, 5, 4]]]},
+                        {first_train: "20:51", delta: [5, 6, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7, 8]},
+                        {first_train: "22:31", delta: [9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["06:01", "06:11"]},
+                        {plan: "珠市口始发空车", first_train: "08:29", skip_trains: 3, until: "15:01"},
+                        {plan: "珠市口始发空车", first_train: "15:36", skip_trains: 2, until: "20:51"}
+                    ]
+                }
+            }
+        },
+        "育新": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:44", delta: [7, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [3, 2, 3, 3]]]},
+                        {first_train: "08:46", delta: [2, [5, [3, 4]], 3, 5, 6, 6, 7, 7, 9, 7, [20, [7, 8]]]},
+                        {first_train: "15:18", delta: [[9, [5]], [45, [4]], 6, 6, 6, [2, [6, 5, 5, 7]], [2, [7, 6, 5, 5, 7]]]},
+                        {first_train: "21:13", delta: [7, 5, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:44", until: "05:17"},
+                        {plan: "回龙观东大街出库车", trains: ["06:42", "06:50"]},
+                        {plan: "回龙观东大街出库车", first_train: "06:56", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:26", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:02"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:13", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:44", delta: [10, 10, 10, 9, [7, [10]], 7, 7, 7, 8, 6, [57, [7]], [7, [5]]]},
+                        {first_train: "14:27", delta: [[2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:22", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [8, [7]]]},
+                        {first_train: "21:58", delta: [8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:44", count: 4},
+                        {plan: "珠市口小交路", first_train: "06:54", skip_trains: 3, until: "13:26"},
+                        {plan: "珠市口小交路", first_train: "14:02", skip_trains: 2, until: "19:17"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:58", delta: [10, 10, 9, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]]]},
+                        {first_train: "10:00", delta: [[12, [5]], 4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [6, [4]]]},
+                        {first_train: "17:43", delta: [[11, [3, 3, 3, 4]], [6, [4]], 5, 4, 5, 4, 6, 6, 6]},
+                        {first_train: "21:11", delta: [7, [17, [6]], 8, [5, [9]], 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:58", "06:08"]},
+                        {plan: "回龙观东大街回库车", first_train: "09:04", skip_trains: 1, until: "10:00"},
+                        {plan: "回龙观东大街回库车", trains: ["10:15", "10:25", "10:45", "10:55", "11:15", "11:25", "18:02", "18:22"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:35", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "19:04", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:43", "19:53"]},
+                        {plan: "回龙观东大街回库车", first_train: "20:10", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:58", delta: [10, 10, [2, [11, 10, 10, 9]], 11, 8, [3, [8, 7, 7, 7, 7, 6]]]},
+                        {first_train: "10:11", delta: [[19, [7]], 6, 8, [12, [7]], 6, 8, 7, 6, 8, 7, 7]},
+                        {first_train: "14:58", delta: [7, 5, 7, 6, [15, [5]], 4, 6, [16, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:42", delta: [6, 5, 6, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7]},
+                        {first_train: "22:21", delta: [7, 9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:58", "06:08"]},
+                        {plan: "珠市口始发空车", first_train: "08:26", skip_trains: 3, until: "14:58"},
+                        {plan: "珠市口始发空车", first_train: "15:33", skip_trains: 2, until: "20:48"}
+                    ]
+                }
+            }
+        },
+        "西小口": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:47", delta: [7, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "08:57", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:15", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "19:46", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "21:15", delta: [7, 5, [11, [6]], 7, 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:47", until: "05:20"},
+                        {plan: "回龙观东大街出库车", trains: ["06:45", "06:53"]},
+                        {plan: "回龙观东大街出库车", first_train: "06:58", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:29", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:04"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:15", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:47", delta: [10, 10, 10, 9, [7, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]]]},
+                        {first_train: "17:15", delta: [[5, [5]], [3, [4, 6, 5, 5, 5, 5]], 4, 6, 5, [5, [7]]]},
+                        {first_train: "20:06", delta: [[2, [8, 7, 7, 7, 7, 7]], 7, 7, 7, 8, 8, 9, 9]},
+                        {first_train: "22:37", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:47", count: 4},
+                        {plan: "珠市口小交路", first_train: "06:57", skip_trains: 3, until: "13:29"},
+                        {plan: "珠市口小交路", first_train: "14:05", skip_trains: 2, until: "19:20"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:55", delta: [11, 9, 9, 8, 7, 6, 5, 5, [8, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:57", delta: [4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7, 8, 7]},
+                        {first_train: "16:57", delta: [5, 5, 5, [7, [4]], [10, [3, 3, 4, 3]], 3, 3, 4, 4]},
+                        {first_train: "20:08", delta: [3, 5, [5, [4]], 5, 5, [2, [5, 7, 6, 5, 7]], 6, 6]},
+                        {first_train: "22:04", delta: [5, 6, 7, [6, [6]], 7, 10, 9, 9, 9, 9, 10, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:55", "06:06"]},
+                        {plan: "回龙观东大街回库车", first_train: "09:01", skip_trains: 1, until: "09:57"},
+                        {plan: "回龙观东大街回库车", trains: ["10:12", "10:22", "10:42", "10:52", "11:12", "11:22", "17:59", "18:19"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:32", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "19:01", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:40", "19:50"]},
+                        {plan: "回龙观东大街回库车", first_train: "20:08", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:55", delta: [11, 9, 11, [8, [10]], 8, 8, 7, 7, 8, 7, 6, [2, [7, 8, 6, 7, 7, 7, 7, 7]], 7, 8, 6, 7, 7, 7, 7]},
+                        {first_train: "11:25", delta: [[4, [7, 8, 6, 7]], [13, [7]], 8, 6, 5, 7, 6, 5, 6]},
+                        {first_train: "15:36", delta: [4, [7, [6, 4, 5]], 6, 4, 6, 4, 5, [12, [5, 6, 4]]]},
+                        {first_train: "20:57", delta: [6, [5, [8, 7]], 8, 8, 7, 7, 8, 7, 8, 7, 8, 7]},
+                        {first_train: "23:43", delta: [9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:55", "06:06"]},
+                        {plan: "珠市口始发空车", first_train: "08:24", skip_trains: 3, until: "14:56"},
+                        {plan: "珠市口始发空车", first_train: "15:31", skip_trains: 2, until: "20:46"}
+                    ]
+                }
+            }
+        },
+        "永泰庄": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:49", delta: [7, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "08:59", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:17", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "19:48", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "21:17", delta: [7, 5, [11, [6]], 7, 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:49", until: "05:22"},
+                        {plan: "回龙观东大街出库车", trains: ["06:47", "06:55"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:00", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:31", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:06"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:17", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:49", delta: [10, 10, 10, 9, [7, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]]]},
+                        {first_train: "17:17", delta: [[5, [5]], [3, [4, 6, 5, 5, 5, 5]], 4, 6, 5, [5, [7]]]},
+                        {first_train: "20:08", delta: [[2, [8, 7, 7, 7, 7, 7]], 7, 7, 7, 8, 8, 9, 9]},
+                        {first_train: "22:39", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:49", count: 4},
+                        {plan: "珠市口小交路", first_train: "06:59", skip_trains: 3, until: "13:31"},
+                        {plan: "珠市口小交路", first_train: "14:07", skip_trains: 2, until: "19:22"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:53", delta: [10, 10, 9, 8, 7, 6, 5, 4, 5, [7, [4]], [21, [3, 4]]]},
+                        {first_train: "09:55", delta: [[12, [5]], 4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7]},
+                        {first_train: "16:40", delta: [7, 8, 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]], [6, [4]]]},
+                        {first_train: "20:30", delta: [4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, 10, 9, 9]},
+                        {first_train: "23:40", delta: [9, 10, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:53", "06:03"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:59", skip_trains: 1, until: "09:55"},
+                        {plan: "回龙观东大街回库车", trains: ["10:10", "10:20", "10:40", "10:50", "11:10", "11:20", "17:57", "18:17"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:30", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:59", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:38", "19:48"]},
+                        {plan: "回龙观东大街回库车", first_train: "20:05", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:53", delta: [10, 10, 11, [8, [10]], 8, 8, 7, 7, 7, 8, 6, [55, [7]]]},
+                        {first_train: "15:05", delta: [7, 6, 5, 5, 6, 4, [15, [5]], 6, 4, [12, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:37", delta: [6, 5, 7, 6, 8, 7, 8, 6, 9, 7, 8, 7, 8]},
+                        {first_train: "22:16", delta: [8, 8, 6, 8, 8, 7, 8, 7, 8, 7, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:53", "06:03"]},
+                        {plan: "珠市口始发空车", first_train: "08:21", skip_trains: 3, until: "14:53"},
+                        {plan: "珠市口始发空车", first_train: "15:28", skip_trains: 2, until: "20:43"}
+                    ]
+                }
+            }
+        },
+        "林萃桥": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:52", delta: [7, 7, 7, 6, 6, 6, 8, [9, [7]], 4, 4, [11, [3, 3, 2, 3]]]},
+                        {first_train: "08:54", delta: [3, 2, [5, [4, 3]], 5, 6, 6, 7, 7, 9, 7, [20, [7, 8]]]},
+                        {first_train: "15:26", delta: [[9, [5]], [45, [4]], 6, 6, 6, [2, [6, 5, 5, 7]], 7, 6]},
+                        {first_train: "20:33", delta: [5, 7, 7, 6, 5, 6, 6, 6, 7, 5, [12, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:52", until: "05:25"},
+                        {plan: "回龙观东大街出库车", trains: ["06:50", "06:58"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:04", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:34", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:10"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:21", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:52", delta: [10, 10, 10, 9, [7, [10]], 7, 7, 7, 8, 6, [57, [7]], [7, [5]]]},
+                        {first_train: "14:35", delta: [[2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:30", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [8, [7]]]},
+                        {first_train: "22:06", delta: [8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:52", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:02", skip_trains: 3, until: "13:34"},
+                        {plan: "珠市口小交路", first_train: "14:10", skip_trains: 2, until: "19:25"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:50", delta: [10, 10, 9, 7, 7, 7, 5, [10, [4]], [21, [3, 4]], [12, [5]]]},
+                        {first_train: "10:56", delta: [6, 5, 5, 5, 5, 7, [21, [7, 8]], 7, 5, 5, 5, [7, [4]]]},
+                        {first_train: "17:38", delta: [[10, [3, 3, 3, 4]], 3, 3, [7, [4]], 5, 4, 5, 4, 6]},
+                        {first_train: "20:52", delta: [6, 5, 7, [8, [6]], 5, 6, 7, [6, [6]], 8, [5, [9]], 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:50", "06:00"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:56", skip_trains: 1, until: "09:52"},
+                        {plan: "回龙观东大街回库车", trains: ["10:07", "10:17", "10:37", "10:47", "11:07", "11:17", "17:54", "18:13"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:26", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:56", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:35", "19:44"]},
+                        {plan: "回龙观东大街回库车", first_train: "20:02", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:50", delta: [10, 10, [2, [11, 10, 10, 9]], 11, 8, [3, [8, 7, 7, 7, 7, 6]]]},
+                        {first_train: "10:03", delta: [[2, [6, 8, 7, 7, 7, 7, 7, 7]], 7, 7, 7, 6]},
+                        {first_train: "12:30", delta: [[7, [7]], 6, 8, 7, 7, 6, 7, 8, 7, 6, 8, 7, 7]},
+                        {first_train: "14:50", delta: [7, 5, 7, 6, [15, [5]], 4, 6, [16, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:34", delta: [6, 5, 6, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7]},
+                        {first_train: "22:13", delta: [7, 9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:50", "06:00"]},
+                        {plan: "珠市口始发空车", first_train: "08:18", skip_trains: 3, until: "14:50"},
+                        {plan: "珠市口始发空车", first_train: "15:25", skip_trains: 2, until: "20:40"}
+                    ]
+                }
+            }
+        },
+        "森林公园南门": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:55", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 3, [11, [3, 3, 3, 2]]]},
+                        {first_train: "08:57", delta: [3, 3, [5, [3, 4]], 4, 6, 6, 7, 8, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:24", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "19:55", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 6]},
+                        {first_train: "21:24", delta: [7, 5, [11, [6]], 7, 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:55", until: "05:29"},
+                        {plan: "回龙观东大街出库车", trains: ["06:53", "07:02"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:07", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:37", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:13"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:24", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:55", delta: [[11, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]], [6, [5]], [3, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "19:23", delta: [6, 5, [5, [7]], 6, [2, [8, 7, 7, 7, 7, 7]], 7]},
+                        {first_train: "21:55", delta: [7, 8, 8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:55", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:06", skip_trains: 3, until: "13:38"},
+                        {plan: "珠市口小交路", first_train: "14:14", skip_trains: 2, until: "19:29"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:46", delta: [11, 10, 8, 8, 7, 6, 5, 5, [9, [4]], [21, [3, 4]], [8, [5]]]},
+                        {first_train: "10:34", delta: [4, 6, 5, 4, 6, 5, 5, 5, 5, 7, [20, [7, 8]], 7]},
+                        {first_train: "16:40", delta: [8, 5, 5, 5, [7, [4]], [10, [3, 4, 3, 3]], 3, 4, 3]},
+                        {first_train: "19:55", delta: [4, 3, 5, [5, [4]], 5, 5, [2, [5, 7, 6, 5, 7]], 6]},
+                        {first_train: "21:49", delta: [6, 5, 6, 7, [6, [6]], 7, 10, 9, 9, 9, 9, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:46", "05:57"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:53", skip_trains: 1, until: "09:49"},
+                        {plan: "回龙观东大街回库车", trains: ["10:04", "10:14", "10:34", "10:44", "11:04", "11:14", "17:51", "18:10"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:23", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:52", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:31", "19:41"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:59", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:46", delta: [11, 10, 11, 9, 11, 9, 11, 10, 10, 9, 11, 8, [3, [8, 7, 7, 7, 7, 6]]]},
+                        {first_train: "10:00", delta: [6, 8, [6, [7]], 6, 8, 7, [2, [7, 7, 7, 6, 8]]]},
+                        {first_train: "12:34", delta: [7, 7, 7, 6, 8, 7, 6, 8, 7, 6, 7, 7, 8, 7]},
+                        {first_train: "14:18", delta: [8, 7, 7, 7, 7, 5, 7, [2, [6, 5, 5, 5, 5, 5, 4]]]},
+                        {first_train: "16:22", delta: [5, 4, 6, [11, [5]], [2, [4, 6, 5, 5, 5]], [4, [4, 5, 6, 5, 5, 5]]]},
+                        {first_train: "20:26", delta: [5, 6, 5, 6, 7, 7, 8, 7, 7, 8, [7, [8, 7]]]},
+                        {first_train: "23:24", delta: [11, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:46", "05:57"]},
+                        {plan: "珠市口始发空车", first_train: "08:15", skip_trains: 3, until: "14:47"},
+                        {plan: "珠市口始发空车", first_train: "15:22", skip_trains: 2, until: "20:37"}
+                    ]
+                }
+            }
+        },
+        "奥林匹克公园": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "04:58", delta: [7, 7, 7, 6, 6, 6, [10, [7]], 5, 3, [11, [3, 3, 3, 2]]]},
+                        {first_train: "08:59", delta: [3, 3, [5, [3, 4]], 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:26", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "19:57", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "21:26", delta: [7, 5, [11, [6]], 7, 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:58", until: "05:31"},
+                        {plan: "回龙观东大街出库车", trains: ["06:55", "07:04"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:09", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:39", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:15"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:26", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "04:58", delta: [10, 10, 10, 9, [7, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]]]},
+                        {first_train: "17:26", delta: [[5, [5]], [3, [4, 6, 5, 5, 5, 5]], 4, 6, 5, [5, [7]]]},
+                        {first_train: "20:17", delta: [[2, [8, 7, 7, 7, 7, 7]], 7, 7, 7, 8, 8, 9, 9]},
+                        {first_train: "22:48", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "04:58", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:08", skip_trains: 3, until: "13:40"},
+                        {plan: "珠市口小交路", first_train: "14:16", skip_trains: 2, until: "19:31"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:44", delta: [11, 9, 9, 8, 7, 6, 5, 4, 5, [7, [4]], [21, [3, 4]]]},
+                        {first_train: "09:46", delta: [[12, [5]], 4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7]},
+                        {first_train: "16:31", delta: [7, 8, 5, 5, 5, [7, [4]], [10, [3, 3, 4, 3]], 3, 3]},
+                        {first_train: "19:49", delta: [4, 4, 3, 5, [5, [4]], 5, 5, 5, 7, 5, 5, 8, 5]},
+                        {first_train: "21:17", delta: [6, 5, 7, 5, 7, 5, [9, [6]], 8, 10, 9, 9, 9, 9]},
+                        {first_train: "23:50", delta: [9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:44", "05:55"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:50", skip_trains: 1, until: "09:46"},
+                        {plan: "回龙观东大街回库车", trains: ["10:01", "10:11", "10:31", "10:41", "11:01", "11:11", "17:48", "18:08"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:21", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:50", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:29", "19:39"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:57", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:44", delta: [11, 9, 11, [8, [10]], 8, 8, 7, 7, 7, 8, 6, [55, [7]]]},
+                        {first_train: "14:56", delta: [7, 6, 5, 5, 6, 4, [15, [5]], [2, [6, 4, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "18:09", delta: [[30, [5]], 7, 6, [5, [8, 7]], 8, 8, 7, 7, 8, 7, 8]},
+                        {first_train: "23:07", delta: [8, 7, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:44", "05:55"]},
+                        {plan: "珠市口始发空车", first_train: "08:12", skip_trains: 3, until: "14:44"},
+                        {plan: "珠市口始发空车", first_train: "15:19", skip_trains: 2, until: "20:34"}
+                    ]
+                }
+            }
+        },
+        "奥体中心": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:00", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 3, [11, [3, 3, 3, 2]]]},
+                        {first_train: "09:02", delta: [3, 3, [5, [3, 4]], 4, 6, 6, 7, 7, 9, [20, [7, 8]]]},
+                        {first_train: "15:29", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 4]},
+                        {first_train: "20:00", delta: [6, 5, 6, 6, 7, 6, 5, 5, 7, 7, 6, 5, 6, 6]},
+                        {first_train: "21:29", delta: [7, 5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:00", until: "05:34"},
+                        {plan: "回龙观东大街出库车", trains: ["06:58", "07:07"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:12", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:42", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:18"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:29", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:00", delta: [10, 10, 10, 9, 11, [6, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]]]},
+                        {first_train: "17:29", delta: [[5, [5]], [3, [4, 6, 5, 5, 5, 5]], 4, 6, 5, [5, [7]]]},
+                        {first_train: "20:20", delta: [[2, [8, 7, 7, 7, 7, 7]], 6, 8, 7, 8, 8, 9, 9]},
+                        {first_train: "22:51", delta: [9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:00", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:11", skip_trains: 3, until: "13:43"},
+                        {plan: "珠市口小交路", first_train: "14:19", skip_trains: 2, until: "19:34"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:42", delta: [10, 10, 9, 7, 7, 7, 4, 5, [9, [4]], [21, [3, 4]], [8, [5]]]},
+                        {first_train: "10:29", delta: [4, 6, 5, 4, 6, 5, 5, 5, 5, 7, [20, [7, 8]], 7]},
+                        {first_train: "16:35", delta: [8, 5, 5, 5, [7, [4]], [10, [3, 4, 3, 3]], 3, 4, 3]},
+                        {first_train: "19:50", delta: [4, 3, 5, [5, [4]], 5, 5, [2, [5, 7, 6, 5, 7]], 6]},
+                        {first_train: "21:44", delta: [6, 5, 6, 7, [6, [6]], 7, 10, 9, 9, 9, 9, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:42", "05:52"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:48", skip_trains: 1, until: "09:44"},
+                        {plan: "回龙观东大街回库车", trains: ["09:59", "10:09", "10:29", "10:39", "10:59", "11:09", "17:46", "18:05"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:18", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:47", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:26", "19:36"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:54", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:42", delta: [10, 10, [2, [11, 10, 10, 9]], 11, 8, [3, [8, 7, 7, 7, 7, 6]]]},
+                        {first_train: "09:55", delta: [[2, [6, 8, 7, 7, 7, 7, 7, 7]], 7, 7, 7, 6]},
+                        {first_train: "12:22", delta: [[7, [7]], 6, 8, 7, 7, 6, 7, 8, 7, 6, 8, 7, 7]},
+                        {first_train: "14:42", delta: [7, 5, 7, 6, [15, [5]], 4, 6, [11, [5]], 4, 6, 5, 5, 5, 4, 6, 5, 5]},
+                        {first_train: "18:17", delta: [[4, [4, 5, 6, 5, 5, 5]], 4, 5, 6, 5, 6, 7, 7]},
+                        {first_train: "21:05", delta: [7, 7, 8, [7, [8, 7]], 8, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:42", "05:52"]},
+                        {plan: "珠市口始发空车", first_train: "08:10", skip_trains: 3, until: "14:42"},
+                        {plan: "珠市口始发空车", first_train: "15:17", skip_trains: 2, until: "20:32"}
+                    ]
+                }
+            }
+        },
+        "北土城": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:02", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 4, 4, [11, [3, 3, 3, 2]]]},
+                        {first_train: "09:04", delta: [3, 3, [5, [3, 4]], 4, 6, 6, 7, 7, 9, [20, [7, 8]]]},
+                        {first_train: "15:31", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 4]},
+                        {first_train: "20:02", delta: [6, 5, 6, 6, 7, 6, 5, 5, 7, 7, 6, 5, 6, 6]},
+                        {first_train: "21:31", delta: [7, 5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:02", until: "05:36"},
+                        {plan: "回龙观东大街出库车", trains: ["07:00", "07:09"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:14", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:44", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:20"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:31", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:02", delta: [[11, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]], [6, [5]], [3, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "19:30", delta: [6, 5, [5, [7]], 6, [2, [8, 7, 7, 7, 7, 7]], 6]},
+                        {first_train: "22:02", delta: [7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:02", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:13", skip_trains: 3, until: "13:45"},
+                        {plan: "珠市口小交路", first_train: "14:21", skip_trains: 2, until: "19:36"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:40", delta: [10, 10, 8, 8, 7, 6, 5, 4, 5, [7, [4]], [21, [3, 4]]]},
+                        {first_train: "09:41", delta: [[12, [5]], 4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7]},
+                        {first_train: "16:26", delta: [7, 8, 5, 5, 5, [7, [4]], [10, [3, 3, 4, 3]], 3, 3]},
+                        {first_train: "19:44", delta: [4, 4, 3, 5, [5, [4]], 5, 5, [2, [5, 7, 6, 5, 7]]]},
+                        {first_train: "21:35", delta: [7, 5, [9, [6]], 8, 10, 9, 9, 9, 9, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:40", "05:50"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:45", skip_trains: 1, until: "09:41"},
+                        {plan: "回龙观东大街回库车", trains: ["09:56", "10:06", "10:26", "10:36", "10:56", "11:06", "17:43", "18:03"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:16", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:45", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:24", "19:34"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:52", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:40", delta: [[11, [10]], 8, 8, 7, 7, 8, 7, 6, [2, [7, 8, 6, 7, 7, 7, 7, 7]], 7, 8, 6, 7, 7, 7, 7]},
+                        {first_train: "11:09", delta: [[4, [7, 8, 6, 7]], [13, [7]], 8, 6, 5, 7, 6, 5, 6]},
+                        {first_train: "15:20", delta: [4, [7, [6, 4, 5]], 6, 4, 6, 4, 5, [12, [5, 6, 4]]]},
+                        {first_train: "20:41", delta: [6, [5, [8, 7]], 8, 8, 7, 7, 8, 7, 8, 7, 8, 7]},
+                        {first_train: "23:27", delta: [9, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:40", "05:50"]},
+                        {plan: "珠市口始发空车", first_train: "08:08", skip_trains: 3, until: "14:40"},
+                        {plan: "珠市口始发空车", first_train: "15:15", skip_trains: 2, until: "20:30"}
+                    ]
+                }
+            }
+        },
+        "安华桥": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:04", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:15", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 9, 7, 7, [19, [7, 8]]]},
+                        {first_train: "15:33", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:04", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "21:34", delta: [6, 6, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:04", until: "05:38"},
+                        {plan: "回龙观东大街出库车", trains: ["07:03", "07:11"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:16", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:47", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:22"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:33", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:04", delta: [11, 10, 10, 9, [7, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]]]},
+                        {first_train: "17:33", delta: [[5, [5]], [3, [4, 6, 5, 5, 5, 5]], 4, 6, 5, [5, [7]]]},
+                        {first_train: "20:24", delta: [[2, [8, 7, 7, 7, 7, 7]], 7, 7, 7, 8, 8, 9, 9]},
+                        {first_train: "22:55", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:04", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:15", skip_trains: 3, until: "13:47"},
+                        {plan: "珠市口小交路", first_train: "14:23", skip_trains: 2, until: "19:38"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:37", delta: [11, 10, 8, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]]]},
+                        {first_train: "09:39", delta: [[12, [5]], 4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [6, [4]]]},
+                        {first_train: "17:22", delta: [[11, [3, 3, 3, 4]], [6, [4]], 5, 4, 5, 4, 6, 6, 6]},
+                        {first_train: "20:50", delta: [7, [17, [6]], 8, [5, [9]], 10, 11]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:37", "05:48"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:43", skip_trains: 1, until: "09:39"},
+                        {plan: "回龙观东大街回库车", trains: ["09:54", "10:04", "10:24", "10:34", "10:54", "11:04", "17:41", "18:01"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:14", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:43", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:22", "19:32"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:49", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:37", delta: [11, [10, [10]], 8, 8, 7, 7, 7, 8, 6, [55, [7]], 5, 7]},
+                        {first_train: "15:02", delta: [5, 5, 6, 4, [15, [5]], 6, 4, [12, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:21", delta: [6, 5, 7, 6, 8, 7, 8, 6, 9, 7, 8, 7, 8]},
+                        {first_train: "22:00", delta: [8, 8, 6, 8, 8, 7, 8, 7, 8, 7, 10, 9, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:37", "05:48"]},
+                        {plan: "珠市口始发空车", first_train: "08:05", skip_trains: 3, until: "14:37"},
+                        {plan: "珠市口始发空车", first_train: "15:12", skip_trains: 2, until: "20:27"}
+                    ]
+                }
+            }
+        },
+        "安德里北街": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:07", delta: [7, 7, 7, 6, 6, [11, [7]], 4, 4, [11, [3, 3, 2, 3]]]},
+                        {first_train: "09:09", delta: [3, 2, [5, [4, 3]], 5, 6, 6, 7, 7, 9, 7, [20, [7, 8]]]},
+                        {first_train: "15:41", delta: [[9, [5]], 4, 5, 3, [42, [4]], 6, 6, 6, 6, 5, 5, 7]},
+                        {first_train: "20:13", delta: [5, 6, 6, 7, 6, 5, 5, 7, 7, 6, 5, 6, 6, 6]},
+                        {first_train: "21:43", delta: [5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:07", until: "05:40"},
+                        {plan: "回龙观东大街出库车", trains: ["07:05", "07:13"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:19", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:49", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:25"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:36", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:07", delta: [10, 10, 10, 9, [7, [10]], 7, 7, 7, 8, 6, [57, [7]], [7, [5]]]},
+                        {first_train: "14:50", delta: [[2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:45", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [8, [7]]]},
+                        {first_train: "22:21", delta: [8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:07", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:17", skip_trains: 3, until: "13:49"},
+                        {plan: "珠市口小交路", first_train: "14:25", skip_trains: 2, until: "19:40"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:35", delta: [10, 10, 9, 7, 7, 7, 5, [10, [4]], [21, [3, 4]], [12, [5]]]},
+                        {first_train: "10:41", delta: [6, 5, 5, 5, 5, 7, [21, [7, 8]], 7, 5, 5, 5, [7, [4]]]},
+                        {first_train: "17:23", delta: [[10, [3, 3, 3, 4]], 3, 3, [7, [4]], 5, 4, 5, 4, 6]},
+                        {first_train: "20:37", delta: [6, 5, 7, [8, [6]], 5, 6, 7, [6, [6]], 8, [5, [9]], 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:35", "05:45"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:41", skip_trains: 1, until: "09:37"},
+                        {plan: "回龙观东大街回库车", trains: ["09:52", "10:02", "10:22", "10:32", "10:52", "11:02", "17:39", "17:58"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:11", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:41", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:20", "19:29"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:47", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:35", delta: [10, 10, [2, [11, 10, 10, 9]], 11, 8, [3, [8, 7, 7, 7, 7, 6]]]},
+                        {first_train: "09:48", delta: [[19, [7]], 6, 8, [12, [7]], 6, 8, 7, 6, 8, 7, 7]},
+                        {first_train: "14:35", delta: [7, 5, 7, 6, [15, [5]], 4, 6, [16, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:19", delta: [6, 5, 6, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7]},
+                        {first_train: "21:58", delta: [7, 9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:35", "05:45"]},
+                        {plan: "珠市口始发空车", first_train: "08:03", skip_trains: 3, until: "14:35"},
+                        {plan: "珠市口始发空车", first_train: "15:10", skip_trains: 2, until: "20:25"}
+                    ]
+                }
+            }
+        },
+        "鼓楼大街": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:09", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 3, [11, [3, 3, 3, 2]]]},
+                        {first_train: "09:11", delta: [3, 3, [5, [3, 4]], 4, 6, 6, 7, 7, 9, [20, [7, 8]]]},
+                        {first_train: "15:38", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 4]},
+                        {first_train: "20:09", delta: [6, 5, 6, 6, 7, 6, 5, 5, 7, 7, 6, 5, 6, 6]},
+                        {first_train: "21:38", delta: [7, 5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:09", until: "05:43"},
+                        {plan: "回龙观东大街出库车", trains: ["07:07", "07:16"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:21", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:51", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:27"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:38", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:09", delta: [10, 10, 10, 9, 11, [6, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]]]},
+                        {first_train: "17:38", delta: [[5, [5]], [3, [4, 6, 5, 5, 5, 5]], 4, 6, 5, [5, [7]]]},
+                        {first_train: "20:29", delta: [[2, [8, 7, 7, 7, 7, 7]], 6, 8, 7, 8, 8, 9, 9]},
+                        {first_train: "23:00", delta: [9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:09", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:20", skip_trains: 3, until: "13:52"},
+                        {plan: "珠市口小交路", first_train: "14:28", skip_trains: 2, until: "19:43"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:33", delta: [10, 10, 8, 8, 7, 6, 5, 5, [9, [4]], [21, [3, 4]], [8, [5]]]},
+                        {first_train: "10:20", delta: [4, 6, 5, 4, 6, 5, 5, 5, 5, 7, [20, [7, 8]], 7]},
+                        {first_train: "16:26", delta: [8, 5, 5, 5, [7, [4]], [10, [3, 4, 3, 3]], 3, 4, 3]},
+                        {first_train: "19:41", delta: [4, 3, 5, [5, [4]], 5, 5, [2, [5, 7, 6, 5, 7]], 6]},
+                        {first_train: "21:35", delta: [6, 5, 6, 7, [6, [6]], 7, 10, 9, 9, 9, 9, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:33", "05:43"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:39", skip_trains: 1, until: "09:35"},
+                        {plan: "回龙观东大街回库车", trains: ["09:50", "10:00", "10:20", "10:30", "10:50", "11:00", "17:37", "17:56"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:09", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:38", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:17", "19:27"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:45", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:33", delta: [10, 10, 11, 9, 11, 9, 11, 10, 10, 9, 11, 8, 8, 7]},
+                        {first_train: "07:54", delta: [7, 6, 7, 8, 7, 6, 8, [2, [7, 6, 7, 8, 7]], [3, [6, 8, 7, 7]]]},
+                        {first_train: "11:23", delta: [7, 8, 7, 6, 8, 6, 8, [2, [6, 8, 7, 7]], 6]},
+                        {first_train: "13:23", delta: [6, 8, 6, 8, 7, 6, 7, 8, 7, 7, 6, 6, 7, 6, [11, [5]]]},
+                        {first_train: "15:58", delta: [4, 6, 5, 4, 6, [11, [5]], [2, [4, 6, 5, 5, 5]], [4, [4, 5, 6, 5, 5, 5]]]},
+                        {first_train: "20:12", delta: [5, 6, 5, 6, 7, 7, 8, 7, 7, 8, [7, [8, 7]]]},
+                        {first_train: "23:11", delta: [10, 9, 9, 9]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:33", "05:43"]},
+                        {plan: "珠市口始发空车", first_train: "08:01", skip_trains: 3, until: "14:33"},
+                        {plan: "珠市口始发空车", first_train: "15:08", skip_trains: 2, until: "20:23"}
+                    ]
+                }
+            }
+        },
+        "什刹海": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:11", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [3, 2, 3, 3]]]},
+                        {first_train: "09:14", delta: [2, [6, [3, 4]], 7, 5, 8, 7, 9, 7, [20, [7, 8]], [9, [5]]]},
+                        {first_train: "16:31", delta: [[45, [4]], 6, 6, 6, 6, 5, 5, [3, [7, 5, 6, 5, 7]]]},
+                        {first_train: "21:41", delta: [6, 6, 5, 7, [11, [6]], 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:11", until: "05:45"},
+                        {plan: "回龙观东大街出库车", trains: ["07:10", "07:18"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:24", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:54", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:30"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:41", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:11", delta: [11, 10, 10, 9, [7, [10]], [62, [7]], [30, [5]], [2, [4, 6, 5, 5, 5]]]},
+                        {first_train: "17:40", delta: [[5, [5]], [3, [4, 6, 5, 5, 5, 5]], 4, 6, 5, [5, [7]]]},
+                        {first_train: "20:31", delta: [[2, [8, 7, 7, 7, 7, 7]], 6, 8, 7, 8, 8, 9, 9]},
+                        {first_train: "23:02", delta: [9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:11", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:22", skip_trains: 3, until: "13:54"},
+                        {plan: "珠市口小交路", first_train: "14:30", skip_trains: 2, until: "19:45"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:31", delta: [10, 10, 8, 8, 7, 6, 5, 4, 5, [7, [4]], [21, [3, 4]]]},
+                        {first_train: "09:32", delta: [[12, [5]], 4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7]},
+                        {first_train: "16:17", delta: [7, 8, 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]], [6, [4]]]},
+                        {first_train: "20:07", delta: [4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, 10, 9, 9]},
+                        {first_train: "23:17", delta: [9, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:31", "05:41"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:36", skip_trains: 1, until: "09:32"},
+                        {plan: "回龙观东大街回库车", trains: ["09:47", "09:57", "10:17", "10:27", "10:47", "10:57", "17:34", "17:54"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:07", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:36", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:15", "19:25"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:42", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:31", delta: [[11, [10]], 8, 8, 7, [14, [7, 7, 6, 8]], 7, 7, 6, 6]},
+                        {first_train: "14:49", delta: [6, [33, [5]], [5, [4, 6, 5, 5, 5, 5]], 4, 6, 5, 7]},
+                        {first_train: "20:38", delta: [8, 7, 8, 6, 9, 7, 8, 7, 8, 7, 8, 8, 6, 8]},
+                        {first_train: "22:31", delta: [7, 8, 7, 8, 7, 10, 9, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:31", "05:41"]},
+                        {plan: "珠市口始发空车", first_train: "07:58", skip_trains: 3, until: "14:30"},
+                        {plan: "珠市口始发空车", first_train: "15:05", skip_trains: 2, until: "20:20"}
+                    ]
+                }
+            }
+        },
+        "南锣鼓巷": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:13", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [3, 2, 3, 3]]]},
+                        {first_train: "09:16", delta: [2, [6, [3, 4]], 7, 5, 8, 7, 9, 7, [20, [7, 8]], [9, [5]]]},
+                        {first_train: "16:33", delta: [[45, [4]], 6, 6, 6, 6, 5, 5, [3, [7, 5, 6, 5, 7]]]},
+                        {first_train: "21:43", delta: [6, 6, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:13", until: "05:47"},
+                        {plan: "回龙观东大街出库车", trains: ["07:12", "07:20"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:26", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:56", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:32"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:43", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:13", delta: [11, 10, 10, 9, [7, [10]], 8, 7, 6, 8, 7, [13, [7, 6, 7, 8]]]},
+                        {first_train: "13:50", delta: [6, 7, 7, 7, [8, [5]], [2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:52", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [8, [7]]]},
+                        {first_train: "22:28", delta: [8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:13", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:24", skip_trains: 3, until: "13:56"},
+                        {plan: "珠市口小交路", first_train: "14:32", skip_trains: 2, until: "19:47"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:29", delta: [10, 10, 8, 7, 7, 7, 5, [10, [4]], [21, [3, 4]], [12, [5]]]},
+                        {first_train: "10:34", delta: [6, 5, 5, 5, 5, 7, [21, [7, 8]], 7, 5, 5, 5, [7, [4]]]},
+                        {first_train: "17:16", delta: [[10, [3, 3, 3, 4]], 3, 3, [7, [4]], 5, 4, 5, 4, 6]},
+                        {first_train: "20:30", delta: [6, 5, 7, [17, [6]], 8, [5, [9]], 10, 11]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:29", "05:39"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:34", skip_trains: 1, until: "09:30"},
+                        {plan: "回龙观东大街回库车", trains: ["09:45", "09:55", "10:15", "10:25", "10:45", "10:55", "17:32", "17:51"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:04", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:34", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:13", "19:22"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:40", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:29", delta: [[5, [10]], 9, 11, 10, 10, 9, 11, 8, 8, 7, 7, 7, 5]},
+                        {first_train: "08:09", delta: [8, 7, 5, 9, 7, 6, 6, 9, 7, 7, 5, 8, 8, [4, [7, 5, 9, 7]]]},
+                        {first_train: "11:40", delta: [5, 9, 6, 8, [3, [5, 9, 7, 7]], 5, 9, 7, 6]},
+                        {first_train: "14:05", delta: [9, 7, 7, 5, 7, 7, 6, [15, [5]], 4, 6, [11, [5]], 4, 6, 5, 5, 5, 4, 6, 5, 5]},
+                        {first_train: "18:03", delta: [[2, [5, 4, 6, 5, 5, 5]], 4, 5, [2, [6, 5, 5, 5, 5, 4]]]},
+                        {first_train: "20:18", delta: [5, 6, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7, 8]},
+                        {first_train: "21:58", delta: [9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:29", "05:39"]},
+                        {plan: "珠市口始发空车", first_train: "07:56", skip_trains: 3, until: "14:28"},
+                        {plan: "珠市口始发空车", first_train: "15:03", skip_trains: 2, until: "20:18"}
+                    ]
+                }
+            }
+        },
+        "中国美术馆": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:16", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:27", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:45", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:16", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "21:45", delta: [7, 5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:16", until: "05:50"},
+                        {plan: "回龙观东大街出库车", trains: ["07:15", "07:23"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:28", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "07:59", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:34"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:45", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:16", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 7, 5, 7]], 7, 7, [7, [5]]]},
+                        {first_train: "15:00", delta: [[2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:55", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [5, [7]]]},
+                        {first_train: "22:08", delta: [8, 7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:16", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:27", skip_trains: 3, until: "13:59"},
+                        {plan: "珠市口小交路", first_train: "14:35", skip_trains: 2, until: "19:50"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:23", delta: [10, 13, 8, 8, 7, 6, 5, 5, [8, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:27", delta: [4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7, 8, 7]},
+                        {first_train: "16:27", delta: [5, 5, 5, [7, [4]], [10, [3, 3, 4, 3]], 3, 3, 4, 4]},
+                        {first_train: "19:38", delta: [3, 5, [5, [4]], 5, 5, [2, [5, 7, 6, 5, 7]], 6, 6]},
+                        {first_train: "21:34", delta: [5, 6, 7, [6, [6]], 7, 10, 9, 9, 9, 9, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:23", "05:33"]},
+                        {plan: "回龙观东大街回库车", first_train: "08:31", skip_trains: 1, until: "09:27"},
+                        {plan: "回龙观东大街回库车", trains: ["09:42", "09:52", "10:12", "10:22", "10:42", "10:52", "17:29", "17:49"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:02", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:31", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:10", "19:20"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:38", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:23", delta: [10, 13, [9, [10]], 8, 8, 7, [4, [7, 7, 5, 9]], 7, 8, 4, 9, 7, 7, 5, 9, 7, 8, 4, 9, 7, 7, 5]},
+                        {first_train: "11:23", delta: [[3, [7, 7, 5, 9]], [2, [7, 8, 4, 9]], 7, 7, 5, 9]},
+                        {first_train: "14:18", delta: [7, 5, 7, 7, 6, 5, 5, 6, 4, [15, [5]], 6, 4, [11, [5]]]},
+                        {first_train: "17:35", delta: [[5, [4, 6, 5, 5, 5, 5]], 4, 6, 5, 7, 6, 8, 7]},
+                        {first_train: "20:56", delta: [6, 9, 7, 8, 7, 8, 7, 8, 8, 6, 8, 8, 7, 8]},
+                        {first_train: "22:48", delta: [8, 7, 10, 9, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "中国美术馆始发空车", trains: ["05:23", "05:33"]},
+                        {plan: "珠市口始发空车", first_train: "07:53", skip_trains: 3, until: "14:25"},
+                        {plan: "珠市口始发空车", first_train: "15:00", skip_trains: 2, until: "20:15"}
+                    ]
+                }
+            }
+        },
+        "金鱼胡同": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:18", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:29", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:47", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:18", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "21:48", delta: [6, 6, 5, 7, [11, [6]], 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:18", until: "05:52"},
+                        {plan: "回龙观东大街出库车", trains: ["07:17", "07:25"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:30", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:01", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:36"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:47", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:18", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 7, 5, 7]], 7, 7, [7, [5]]]},
+                        {first_train: "15:02", delta: [[2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:57", delta: [[8, [5]], 6, 4, [14, [5]], 7, 8, 6, [9, [7]], 8, [5, [7]]]},
+                        {first_train: "22:10", delta: [8, 7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:18", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:29", skip_trains: 3, until: "14:01"},
+                        {plan: "珠市口小交路", first_train: "14:37", skip_trains: 2, until: "19:52"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:44", delta: [8, 8, 7, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:25", delta: [4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7, 8, 7]},
+                        {first_train: "16:25", delta: [5, 5, 5, [7, [4]], [10, [3, 3, 4, 3]], 3, 3, 4, 4]},
+                        {first_train: "19:36", delta: [3, 5, [5, [4]], 5, 5, [2, [5, 7, 6, 5, 7]], 5, 7]},
+                        {first_train: "21:31", delta: [[9, [6]], 8, 10, 9, 9, 9, 9, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:29", skip_trains: 1, until: "09:25"},
+                        {plan: "回龙观东大街回库车", trains: ["09:40", "09:50", "10:10", "10:20", "10:40", "10:50", "17:27", "17:47"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:00", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:29", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:08", "19:18"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:36", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:44", delta: [[9, [10]], 8, 8, 7, [4, [7, 7, 5, 9]], 7, 8, 4, 9, 7, 7, 5, 9, 7, 8, 4, 9, 7, 7, 5]},
+                        {first_train: "11:21", delta: [[3, [7, 7, 5, 9]], [2, [7, 8, 4, 9]], 7, 7, 5, 9]},
+                        {first_train: "14:16", delta: [7, 5, 7, 7, 6, [19, [5]], 6, 4, [12, [5]], [5, [4, 6, 5, 5, 5, 5]]]},
+                        {first_train: "20:07", delta: [6, 5, 7, 6, 8, 7, 8, 6, 9, 7, 8, 7, 8]},
+                        {first_train: "21:46", delta: [8, 8, 6, 8, 8, 7, 8, 7, 8, 7, 10, 9, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "珠市口始发空车", first_train: "07:51", skip_trains: 3, until: "14:23"},
+                        {plan: "珠市口始发空车", first_train: "14:58", skip_trains: 2, until: "20:13"}
+                    ]
+                }
+            }
+        },
+        "王府井": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:20", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:31", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:49", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:20", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "21:49", delta: [7, 5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:20", until: "05:54"},
+                        {plan: "回龙观东大街出库车", trains: ["07:19", "07:27"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:32", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:03", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:38"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:49", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:20", delta: [10, 10, 10, 9, [7, [10]], [15, [8, 9, 6, 5]], 7, 7, [7, [5]]]},
+                        {first_train: "15:03", delta: [[2, [6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]]]},
+                        {first_train: "17:58", delta: [[8, [5]], 6, 4, [14, [5]], [12, [7]], 8, [8, [7]], 8, 8, 9]},
+                        {first_train: "23:00", delta: [10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:20", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:32", skip_trains: 3, until: "14:04"},
+                        {plan: "珠市口小交路", first_train: "14:38", skip_trains: 2, until: "19:53"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:42", delta: [8, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:23", delta: [4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]]]},
+                        {first_train: "19:33", delta: [[5, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, [4, [9]]]},
+                        {first_train: "23:16", delta: [10, 11]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:27", skip_trains: 1, until: "09:23"},
+                        {plan: "回龙观东大街回库车", trains: ["09:38", "09:48", "10:08", "10:18", "10:38", "10:48", "17:25", "17:45"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:58", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:27", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:06", "19:16"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:33", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:42", delta: [10, [2, [10, 10, 9, 11]], 8, 8, 7, 7, 7, 4, 9, 8]},
+                        {first_train: "08:17", delta: [4, 10, 7, 6, 5, 10, 7, 7, 4, 9, 8, [4, [7, 4, 10, 7]]]},
+                        {first_train: "11:33", delta: [4, 10, 6, 8, [3, [4, 10, 7, 7]], 4, 10, 7, 6]},
+                        {first_train: "13:57", delta: [10, 7, 7, 4, 8, 7, 6, 5, [4, [5, 4, 6]], 5, 4]},
+                        {first_train: "16:05", delta: [6, [5, [4, 6, 5]], [5, [4, 5, 6, 4, 6, 5]], 4, 5]},
+                        {first_train: "20:11", delta: [4, 7, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7, 8, 7]},
+                        {first_train: "22:00", delta: [6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "珠市口始发空车", first_train: "07:49", skip_trains: 3, until: "14:21"},
+                        {plan: "珠市口始发空车", first_train: "14:56", skip_trains: 2, until: "20:11"}
+                    ]
+                }
+            }
+        },
+        "前门": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:23", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [3, 2, 3, 3]]]},
+                        {first_train: "09:26", delta: [2, [6, [3, 4]], 7, 5, 8, 7, 9, 7, [20, [7, 8]], [9, [5]]]},
+                        {first_train: "16:43", delta: [[45, [4]], 6, 6, 6, [2, [6, 5, 5, 7]], [2, [7, 6, 5, 5, 7]]]},
+                        {first_train: "21:53", delta: [7, 5, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:23", until: "05:57"},
+                        {plan: "回龙观东大街出库车", trains: ["07:22", "07:30"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:36", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:06", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:42"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:53", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:23", delta: [11, 10, 10, 9, [7, [10]], 9, 8, 5, 7, 8, [13, [8, 5, 6, 9]]]},
+                        {first_train: "14:02", delta: [5, 6, 7, 7, 5, 6, 4, 5, 6, 4, 5, 6, 5]},
+                        {first_train: "15:17", delta: [[12, [6, 4, 5]], 5, 5, 5, 6, 4, [2, [6, 4, 5, 5]]]},
+                        {first_train: "19:27", delta: [5, 6, 4, 5, 5, 5, 5, 7, 8, 6, [9, [7]], 8, [7, [7]]]},
+                        {first_train: "22:30", delta: [8, 8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:23", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:35", skip_trains: 3, until: "14:07"},
+                        {plan: "珠市口小交路", first_train: "14:42", skip_trains: 2, until: "19:57"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:38", delta: [9, 7, 7, 7, 5, [10, [4]], [21, [3, 4]], [12, [5]], 4, 6]},
+                        {first_train: "10:35", delta: [5, 5, 5, 7, [21, [7, 8]], 7, 5, 5, 5, [8, [4]], [10, [3, 3, 3, 4]]]},
+                        {first_train: "19:19", delta: [3, 4, 4, 3, 5, 4, 4, 4, 5, 3, 5, 5, [2, [5, 7, 6, 5, 7]]]},
+                        {first_train: "21:14", delta: [6, 6, 5, 6, 7, [6, [6]], 8, [5, [9]], 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:24", skip_trains: 1, until: "09:20"},
+                        {plan: "回龙观东大街回库车", trains: ["09:35", "09:45", "10:05", "10:15", "10:35", "10:45", "17:22", "17:41"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:54", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:24", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:03", "19:12"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:30", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:38", delta: [11, 9, 11, 9, 11, 10, 10, 9, 11, 8, 8, 7, 7, [2, [7, 3, 10, 8]]]},
+                        {first_train: "08:41", delta: [4, [6, [10, 8, 7, 3]], 10, 7, 8, [2, [3, 10, 8, 7]]]},
+                        {first_train: "12:57", delta: [10, 7, 8, 3, 10, 8, 6, 4, 10, 8, 7, 3, 9]},
+                        {first_train: "14:37", delta: [6, 5, [3, [5, 4, 6]], 5, 4, 5, 6, 4, 5, 6, [3, [4, 6, 5]]]},
+                        {first_train: "16:57", delta: [6, 4, 5, 6, 5, 4, 5, [5, [6, 4, 6, 5, 3, 6]]]},
+                        {first_train: "20:08", delta: [4, 7, 7, 7, 8, 7, 7, 8, [7, [8, 7]], 8, 10]},
+                        {first_train: "23:15", delta: [9, 9]}
+                    ],
+                    filters: [
+                        {plan: "珠市口始发空车", first_train: "07:46", skip_trains: 3, until: "14:18"},
+                        {plan: "珠市口始发空车", first_train: "14:53", skip_trains: 2, until: "20:08"}
+                    ]
+                }
+            }
+        },
+        "珠市口": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:26", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 3, [11, [3, 3, 3, 2]]]},
+                        {first_train: "09:28", delta: [3, 3, [5, [3, 4]], 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:55", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:26", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "21:55", delta: [7, 5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:26", until: "06:00"},
+                        {plan: "回龙观东大街出库车", trains: ["07:24", "07:33"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:38", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:08", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:44"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:55", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:26", delta: [11, 10, 10, 9, [7, [10]], 9, 9, 4, 6, [14, [9, 9, 5, 5]]]},
+                        {first_train: "14:23", delta: [7, 5, 6, 4, 5, 6, 4, 5, 6, 5, 4, [5, [6, 4, 5]]]},
+                        {first_train: "16:42", delta: [4, 4, [6, [6, 4, 5]], 6, 5, 4, 6, 4, 6, 5, [2, [5, 4, 6, 4, 5, 6]]]},
+                        {first_train: "20:01", delta: [4, 7, 8, 6, [9, [7]], 8, [5, [7]], 6, 8, 7, 8]},
+                        {first_train: "22:49", delta: [9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:26", count: 4},
+                        {plan: "珠市口小交路", first_train: "07:38", skip_trains: 3, until: "14:11"},
+                        {plan: "珠市口小交路", first_train: "14:45", skip_trains: 2, until: "20:01"}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:36", delta: [8, 8, 7, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:17", delta: [4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7, 8, 7]},
+                        {first_train: "16:17", delta: [5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]], [6, [4]], 5, 4]},
+                        {first_train: "20:01", delta: [4, 6, 6, 6, 5, 7, [17, [6]], 8, 10, 9, 9, 9, 9]},
+                        {first_train: "23:21", delta: [10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:21", skip_trains: 1, until: "09:17"},
+                        {plan: "回龙观东大街回库车", trains: ["09:32", "09:42", "10:02", "10:12", "10:32", "10:42", "17:19", "17:39"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:52", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:21", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["19:00", "19:10"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:27", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:36", delta: [10, [2, [10, 10, 9, 11]], 8, 8, 7, 7, 7, 3, 9, 9]},
+                        {first_train: "08:11", delta: [3, 10, 8, 6, 4, 10, 8, 7, 3, 9, 9, [4, [7, 3, 10, 8]]]},
+                        {first_train: "11:27", delta: [3, 10, 7, 8, [3, [3, 10, 8, 7]], 3, 10, 8, 6]},
+                        {first_train: "13:50", delta: [10, 8, 7, 3, 9, 7, 6, 5, 5, 4, 6, 5, 3, 7, [8, [5, 4, 6]]]},
+                        {first_train: "17:20", delta: [4, 5, [5, [6, 4, 6, 5, 3, 6]], 6, 4, 8, 6]},
+                        {first_train: "20:31", delta: [7, 8, 6, 9, 7, 8, 7, 8, 7, 8, 8, 6, 8, 8]},
+                        {first_train: "22:23", delta: [8, 7, 8, 7, 10, 9, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "珠市口始发空车", first_train: "07:43", skip_trains: 3, until: "14:15"},
+                        {plan: "珠市口始发空车", first_train: "14:50", skip_trains: 2, until: "20:05"}
+                    ]
+                }
+            }
+        },
+        "天桥": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:28", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:39", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "15:57", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:28", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "21:57", delta: [7, 5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:28", until: "06:02"},
+                        {plan: "回龙观东大街出库车", trains: ["07:27", "07:35"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:40", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:11", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:46"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:57", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:28", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [7, 8]]]},
+                        {first_train: "18:28", delta: [9, 7, 9, 5, [3, [9, 7, 8, 6]], [9, [7]], 8, [4, [7]]]},
+                        {first_train: "22:14", delta: [6, 8, 7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:28", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:33", delta: [9, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:15", delta: [4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]]]},
+                        {first_train: "19:25", delta: [[5, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, [4, [9]]]},
+                        {first_train: "23:08", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:19", skip_trains: 1, until: "09:15"},
+                        {plan: "回龙观东大街回库车", trains: ["09:30", "09:40", "10:00", "10:10", "10:30", "10:40", "17:17", "17:37"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:50", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:19", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:58", "19:08"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:25", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:33", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:32", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:25", delta: [7, 6, 5, [4, [8, 7]], 8, 6, 9, [5, [7, 8]], [2, [6, 9, 7, 8]]]},
+                        {first_train: "18:27", delta: [9, 7, 7, 7, [2, [9, 7, 8, 6]], 9, 8, 7, 7]},
+                        {first_train: "20:36", delta: [7, 7, 8, 8, 7, 8, 7, 8, 7, 9, 6, 8, 7, 8]},
+                        {first_train: "22:28", delta: [8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "永定门外": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:31", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:42", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "16:00", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:31", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "22:01", delta: [6, 6, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:31", until: "06:05"},
+                        {plan: "回龙观东大街出库车", trains: ["07:30", "07:38"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:43", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:14", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:49"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:00", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:31", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [8, [7, 8]]]},
+                        {first_train: "16:48", delta: [7, [7, [7, 8]], 7, 9, 6, [5, [8, 7]], 8, 6, [8, [7]]]},
+                        {first_train: "21:34", delta: [8, [8, [7]], 8, 8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:31", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:30", delta: [9, 7, 7, 7, 5, [10, [4]], [21, [3, 4]], [12, [5]], 4, 6]},
+                        {first_train: "10:27", delta: [5, 5, 5, 7, [21, [7, 8]], 7, 5, 5, 5, [8, [4]], [10, [3, 3, 3, 4]]]},
+                        {first_train: "19:11", delta: [3, [7, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [16, [6]]]},
+                        {first_train: "22:12", delta: [8, [5, [9]], 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:16", skip_trains: 1, until: "09:12"},
+                        {plan: "回龙观东大街回库车", trains: ["09:27", "09:37", "09:57", "10:07", "10:27", "10:37", "17:14", "17:33"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:46", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:16", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:55", "19:04"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:22", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:30", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:29", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:22", delta: [7, 6, 5, [4, [7, 8]], 7, 7, 8, [5, [8, 7]], [5, [7, 8, 8, 7]]]},
+                        {first_train: "19:54", delta: [8, 9, 7, 7, 8, 7, 7, 8, [7, [8, 7]], 8, 10]},
+                        {first_train: "23:07", delta: [9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "木樨园": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:33", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:44", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "16:02", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:33", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "22:03", delta: [6, 6, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:33", until: "06:07"},
+                        {plan: "回龙观东大街出库车", trains: ["07:32", "07:40"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:45", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:16", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:51"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:02", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:33", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [8, 7]]]},
+                        {first_train: "18:34", delta: [8, 8, 8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [8, [7]]]},
+                        {first_train: "21:36", delta: [8, [8, [7]], 8, 8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:33", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:28", delta: [9, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:10", delta: [4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]]]},
+                        {first_train: "19:20", delta: [[5, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, [4, [9]]]},
+                        {first_train: "23:03", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:14", skip_trains: 1, until: "09:10"},
+                        {plan: "回龙观东大街回库车", trains: ["09:25", "09:35", "09:55", "10:05", "10:25", "10:35", "17:12", "17:32"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:45", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:14", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:53", "19:03"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:20", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:28", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:27", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:20", delta: [7, 6, 5, [4, [7, 8]], 7, 7, 8, [5, [8, 7]], [5, [7, 8, 8, 7]]]},
+                        {first_train: "19:52", delta: [8, 9, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7, 8]},
+                        {first_train: "21:38", delta: [9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "海户屯": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:35", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:46", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "16:04", delta: [5, 5, 5, 5, 4, 6, 5, 5, 5, 5, 4, 5, 3, [41, [4]]]},
+                        {first_train: "19:54", delta: [6, 6, 7, 5, 6, 5, 6, 6, 5, 6, 7, 6, 6, 5]},
+                        {first_train: "21:21", delta: [8, 6, 6, 5, 6, 7, 6, 6, 6, 5, 7, [8, [6]], 4]},
+                        {first_train: "23:29", delta: [6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:35", until: "06:09"},
+                        {plan: "回龙观东大街出库车", trains: ["07:34", "07:42"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:47", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:18", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:53"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:04", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:35", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [8, 7]]]},
+                        {first_train: "18:36", delta: [8, 8, 8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [8, [7]]]},
+                        {first_train: "21:38", delta: [8, [5, [7]], 6, 8, 7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:35", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:26", delta: [9, 8, 7, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [5, [5]]]},
+                        {first_train: "09:38", delta: [7, 3, 5, 5, 5, 5, 4, 6, 5, 5, 5, 5, [19, [7, 8]]]},
+                        {first_train: "15:31", delta: [7, 7, 8, 7, 8, 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]]]},
+                        {first_train: "19:18", delta: [[5, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8]},
+                        {first_train: "22:26", delta: [9, 9, 9, 9, 10, 9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:12", skip_trains: 1, until: "09:08"},
+                        {plan: "回龙观东大街回库车", trains: ["09:23", "09:33", "09:53", "10:03", "10:23", "10:33", "17:10", "17:30"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:43", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:12", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:51", "19:01"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:18", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:26", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:25", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:18", delta: [7, 6, 5, 8, 7, 7, 8, [8, [8, 7]], 8, 6, [5, [9, 7, 7, 7]]]},
+                        {first_train: "19:59", delta: [9, 6, 8, 7, 8, 6, 9, 7, 8, 7, 8, 7, 8]},
+                        {first_train: "21:45", delta: [6, 8, 8, 7, 8, 7, 8, 7, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "大红门": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:37", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:48", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "16:06", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:37", delta: [6, 5, 6, 7, 6, 6, 5, 5, 7, 7, 6, 5, 6, 7]},
+                        {first_train: "22:06", delta: [7, 5, [11, [6]], 7, 6, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:37", until: "06:11"},
+                        {plan: "回龙观东大街出库车", trains: ["07:36", "07:44"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:49", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:20", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:55"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:06", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:37", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [8, 7]]]},
+                        {first_train: "18:38", delta: [8, 8, 8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [8, [7]]]},
+                        {first_train: "21:40", delta: [8, [8, [7]], 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:37", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:24", delta: [9, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:06", delta: [4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]]]},
+                        {first_train: "19:16", delta: [[5, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, [4, [9]]]},
+                        {first_train: "22:59", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:10", skip_trains: 1, until: "09:06"},
+                        {plan: "回龙观东大街回库车", trains: ["09:21", "09:31", "09:51", "10:01", "10:21", "10:31", "17:08", "17:28"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:41", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:10", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:49", "18:59"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:16", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:24", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:23", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:16", delta: [7, 6, 5, [4, [7, 8]], 7, 7, 8, [5, [8, 7]], [5, [7, 8, 8, 7]]]},
+                        {first_train: "19:48", delta: [8, 9, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7, 8]},
+                        {first_train: "21:34", delta: [9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "大红门南": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:39", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:50", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 9, 7, 7, [19, [7, 8]]]},
+                        {first_train: "16:08", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:39", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "22:09", delta: [6, 6, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:39", until: "06:13"},
+                        {plan: "回龙观东大街出库车", trains: ["07:38", "07:46"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:51", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:22", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["08:57"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:08", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:39", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [8, 7]]]},
+                        {first_train: "18:40", delta: [8, 8, 8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [8, [7]]]},
+                        {first_train: "21:42", delta: [8, [8, [7]], 8, 8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:39", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:22", delta: [9, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "10:04", delta: [4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]]]},
+                        {first_train: "19:14", delta: [[5, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, [4, [9]]]},
+                        {first_train: "22:57", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:08", skip_trains: 1, until: "09:04"},
+                        {plan: "回龙观东大街回库车", trains: ["09:19", "09:29", "09:49", "09:59", "10:19", "10:29", "17:06", "17:26"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:39", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:08", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:47", "18:57"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:14", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:22", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:21", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:14", delta: [7, 6, 5, [4, [7, 8]], 7, 7, 8, [5, [8, 7]], [5, [7, 8, 8, 7]]]},
+                        {first_train: "19:46", delta: [8, 9, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7, 8]},
+                        {first_train: "21:32", delta: [9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "和义": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:43", delta: [7, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [3, 2, 3, 3]]]},
+                        {first_train: "09:45", delta: [2, [5, [3, 4]], 3, 5, 6, 6, 7, 7, 9, 7, [20, [7, 8]]]},
+                        {first_train: "16:17", delta: [[9, [5]], [45, [4]], 6, 6, 6, [2, [6, 5, 5, 7]], [2, [7, 6, 5, 5, 7]]]},
+                        {first_train: "22:12", delta: [7, 5, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:43", until: "06:16"},
+                        {plan: "回龙观东大街出库车", trains: ["07:41", "07:49"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:55", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:25", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["09:01"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:12", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:43", delta: [10, 10, 10, 9, 10, 11, 9, 10, 10, 10, 10, 9, 9, 11]},
+                        {first_train: "08:09", delta: [[13, [9, 10, 9]], 10, 9, 7, 7, 5, [15, [8, 7]], 7, 8]},
+                        {first_train: "18:59", delta: [8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [9, [7]], 8, [7, [7]]]},
+                        {first_train: "22:49", delta: [8, 8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:43", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:19", delta: [9, 7, 7, 7, 5, [10, [4]], [21, [3, 4]], [12, [5]], 4, 6]},
+                        {first_train: "10:16", delta: [5, 5, 5, 7, [21, [7, 8]], 7, 5, 5, 5, [8, [4]], [10, [3, 3, 3, 4]]]},
+                        {first_train: "19:00", delta: [3, [7, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [7, [6]]]},
+                        {first_train: "21:07", delta: [5, 6, 7, [6, [6]], 8, [5, [9]], 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:05", skip_trains: 1, until: "09:01"},
+                        {plan: "回龙观东大街回库车", trains: ["09:16", "09:26", "09:46", "09:56", "10:16", "10:26", "17:03", "17:22"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:35", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:05", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:44", "18:53"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:11", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:19", delta: [11, 9, 11, 9, 11, 10, 10, 9, 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:18", delta: [10, 8, 10, 9, 9, [2, [10, 10, 7, 11, 10, 8, 10, 10, 8]]]},
+                        {first_train: "14:02", delta: [9, 7, 6, 5, 7, 8, 7, 8, 7, 8, 7, 7, 8]},
+                        {first_train: "15:43", delta: [8, [5, [8, 7]], [5, [7, 8, 8, 7]], 7, 8, 9, 7, 7]},
+                        {first_train: "20:22", delta: [7, 7, 8, [7, [8, 7]], 8, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "东高地": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:45", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "09:56", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "16:14", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:45", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "22:15", delta: [6, 6, 5, 7, [11, [6]], 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:45", until: "06:19"},
+                        {plan: "回龙观东大街出库车", trains: ["07:44", "07:52"]},
+                        {plan: "回龙观东大街出库车", first_train: "07:57", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:28", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["09:03"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:14", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:45", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [8, 7]]]},
+                        {first_train: "18:46", delta: [8, 8, 8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [8, [7]]]},
+                        {first_train: "21:48", delta: [8, [5, [7]], 6, 8, 7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:45", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:16", delta: [9, 8, 7, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "09:58", delta: [4, 6, 5, 5, 5, 5, [19, [7, 8]], 8, 7, 7, 8, 7]},
+                        {first_train: "15:58", delta: [5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]], [6, [4]], 5, 4]},
+                        {first_train: "19:42", delta: [4, 6, 6, 6, 5, 7, [17, [6]], 8, 9, 10, 9, 9, 9]},
+                        {first_train: "23:02", delta: [9]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:02", skip_trains: 1, until: "08:58"},
+                        {plan: "回龙观东大街回库车", trains: ["09:13", "09:23", "09:43", "09:53", "10:13", "10:23", "17:00", "17:20"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:33", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:02", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:41", "18:51"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:08", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:16", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:15", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:08", delta: [7, 6, 5, 8, 7, 7, 8, [8, [8, 7]], 8, 6, [5, [9, 7, 7, 7]]]},
+                        {first_train: "19:49", delta: [9, 6, 8, 7, 8, 6, 9, 7, 8, 7, 8, 7, 8]},
+                        {first_train: "21:35", delta: [6, 8, 8, 7, 8, 7, 8, 7, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "火箭万源": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:47", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [3, 2, 3, 3]]]},
+                        {first_train: "09:50", delta: [2, [5, [3, 4]], 3, 5, 6, 6, 7, 7, 9, 7, [20, [7, 8]]]},
+                        {first_train: "16:22", delta: [[9, [5]], [45, [4]], 6, 6, 6, [2, [6, 5, 5, 7]], [2, [7, 6, 5, 5, 7]]]},
+                        {first_train: "22:17", delta: [7, 5, 5, 7, [10, [6]], 7, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:47", until: "06:21"},
+                        {plan: "回龙观东大街出库车", trains: ["07:46", "07:54"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:00", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:30", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["09:06"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:17", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:47", delta: [11, 10, 10, 9, 10, 11, 9, 10, 10, 10, 10, 9, 9, 11]},
+                        {first_train: "08:14", delta: [[13, [9, 10, 9]], 10, 9, 7, 7, 5, [15, [8, 7]], 7, 8]},
+                        {first_train: "19:04", delta: [8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [9, [7]], 8, [7, [7]]]},
+                        {first_train: "22:54", delta: [8, 8, 9, 9, 10, 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:47", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:14", delta: [9, 7, 7, 7, 5, [10, [4]], [21, [3, 4]], [12, [5]], 4, 6]},
+                        {first_train: "10:11", delta: [5, 5, 5, 7, [21, [7, 8]], 7, 5, 5, 5, [8, [4]], [10, [3, 3, 3, 4]]]},
+                        {first_train: "18:55", delta: [3, 4, 4, 3, 5, 4, 4, 4, 5, 3, 5, 5, [2, [5, 7, 6, 5, 7]]]},
+                        {first_train: "20:50", delta: [6, 6, 5, 6, 7, [6, [6]], 8, [5, [9]], 10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "08:00", skip_trains: 1, until: "08:56"},
+                        {plan: "回龙观东大街回库车", trains: ["09:11", "09:21", "09:41", "09:51", "10:11", "10:21", "16:58", "17:17"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:30", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "18:00", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:39", "18:48"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:06", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:14", delta: [11, 9, 11, 9, 11, 10, 10, 9, 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:13", delta: [10, 8, 10, 9, 9, [2, [10, 10, 7, 11, 10, 8, 10, 10, 8]]]},
+                        {first_train: "13:57", delta: [9, 7, 6, 5, 7, 8, 7, 8, 7, 8, 7, 7, 8]},
+                        {first_train: "15:38", delta: [8, [5, [8, 7]], [5, [7, 8, 8, 7]], 7, 8, 9, 7, 7]},
+                        {first_train: "20:17", delta: [7, 7, 8, [7, [8, 7]], 8, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "五福堂": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:50", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "10:01", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 9, 7, 7, [19, [7, 8]]]},
+                        {first_train: "16:19", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:50", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "22:20", delta: [6, 6, 5, 7, [11, [6]], 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:50", until: "06:24"},
+                        {plan: "回龙观东大街出库车", trains: ["07:49", "07:57"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:02", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:33", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["09:08"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:19", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:50", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [8, 7]]]},
+                        {first_train: "18:51", delta: [8, 8, 8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [8, [7]]]},
+                        {first_train: "21:53", delta: [8, [5, [7]], 6, 8, 7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:50", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:11", delta: [9, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "09:53", delta: [4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]]]},
+                        {first_train: "19:03", delta: [[5, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, [4, [9]]]},
+                        {first_train: "22:46", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "07:57", skip_trains: 1, until: "08:53"},
+                        {plan: "回龙观东大街回库车", trains: ["09:08", "09:18", "09:38", "09:48", "10:08", "10:18", "16:55", "17:15"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:28", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "17:57", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:36", "18:46"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:03", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:11", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:10", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:03", delta: [7, 6, 5, [4, [7, 8]], 7, 7, 8, [5, [8, 7]], [5, [7, 8, 8, 7]]]},
+                        {first_train: "19:35", delta: [8, 9, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7, 8]},
+                        {first_train: "21:21", delta: [9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "德茂": {
+            "南行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:53", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "10:04", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "16:22", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:53", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "22:23", delta: [6, 6, 5, 7, [11, [6]], 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:53", until: "06:27"},
+                        {plan: "回龙观东大街出库车", trains: ["07:52", "08:00"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:05", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:36", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["09:11"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:22", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:53", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [8, 7]]]},
+                        {first_train: "18:54", delta: [8, 8, 8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [8, [7]]]},
+                        {first_train: "21:56", delta: [8, [5, [7]], 6, 8, 7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:53", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:08", delta: [9, 7, 8, 6, 5, 4, 5, [7, [4]], [21, [3, 4]], 3, [11, [5]]]},
+                        {first_train: "09:50", delta: [4, 6, 5, 5, 5, 5, [22, [7, 8]], 5, 5, 5, [7, [4]], [11, [3, 3, 3, 4]]]},
+                        {first_train: "19:00", delta: [[5, [4]], 5, 4, 5, 4, 6, 6, 6, 5, 7, [17, [6]], 8, [4, [9]]]},
+                        {first_train: "22:43", delta: [10, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "07:54", skip_trains: 1, until: "08:50"},
+                        {plan: "回龙观东大街回库车", trains: ["09:05", "09:15", "09:35", "09:45", "10:05", "10:15", "16:52", "17:12"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:25", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "17:54", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:33", "18:43"]},
+                        {plan: "回龙观东大街回库车", first_train: "19:00", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:08", delta: [[2, [11, 10, 10, 9]], 11, 8, 8, 7, 7, [2, [10, 9, 9, 10, 10, 8, 10, 10, 8]]]},
+                        {first_train: "10:07", delta: [10, 8, 10, 10, 8, 10, 10, 7, 11, [5, [10, 8, 10]]]},
+                        {first_train: "14:00", delta: [7, 6, 5, [4, [7, 8]], 7, 7, 8, [5, [8, 7]], [5, [7, 8, 8, 7]]]},
+                        {first_train: "19:32", delta: [8, 9, 7, 7, 8, 7, 7, 8, 8, 7, 8, 7, 8]},
+                        {first_train: "21:18", delta: [9, 6, 8, 7, 8, 7, 8, 7, 8, 10, 9, 9, 9]}
+                    ],
+                    filters: []
+                }
+            }
+        },
+        "瀛海": {
+            "南行": {
+                // 以+3min计算
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:56", delta: [8, 7, 7, 6, 6, 6, [10, [7]], 5, 4, [11, [2, 3, 3, 3]], 2, 3, 3]},
+                        {first_train: "10:07", delta: [[4, [4, 3]], 4, 4, 7, 5, 8, 7, 8, 8, 7, [19, [7, 8]]]},
+                        {first_train: "16:25", delta: [[10, [5]], 4, 5, 3, [42, [4]], 6, 6, 7, 5, 6, 5]},
+                        {first_train: "20:56", delta: [6, 5, 6, 7, 6, 6, 5, 5, 8, 6, 6, 5, 6, 7]},
+                        {first_train: "22:26", delta: [6, 6, 5, 7, [11, [6]], 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:56", until: "06:30"},
+                        {plan: "回龙观东大街出库车", trains: ["07:55", "08:03"]},
+                        {plan: "回龙观东大街出库车", first_train: "08:08", skip_trains: 3, count: 3},
+                        {plan: "回龙观东大街出库车", first_train: "08:39", skip_trains: 2, count: 4},
+                        {plan: "回龙观东大街出库车", trains: ["09:14"]},
+                        {plan: "回龙观东大街出库车", first_train: "09:25", skip_trains: 4, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:56", delta: [11, 10, 10, 9, [7, [10]], [15, [9, 9, 10]], 7, 7, 5, [15, [8, 7]]]},
+                        {first_train: "18:57", delta: [8, 8, 8, 6, [2, [8, 8, 7, 7]], 8, 7, 8, 6, [8, [7]]]},
+                        {first_train: "21:59", delta: [8, [5, [7]], 6, 8, 7, 8, 8, 9, 9, 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街出库车", first_train: "05:56", count: 4}
+                    ]
+                }
+            },
+            "北行": {
+                "工作日": {
+                    schedule: [
+                        {first_train: "05:06", delta: [8, 8, 7, 6, 5, 4, 4, 5, 4, 4, 4, 4, 3, 5]},
+                        {first_train: "06:19", delta: [5, 3, [12, [3, 4]], [8, [4, 3]], [12, [5]], 4, 6, 5, 5]},
+                        {first_train: "10:12", delta: [5, [19, [7, 8]], 8, 7, 7, 8, 7, 8, 5, 5, 5, 2]},
+                        {first_train: "16:10", delta: [2, 6, 4, 4, 4, 2, 4, 4, 2, 4, 3, 3, 4, 3]},
+                        {first_train: "17:01", delta: [5, 3, 3, 3, 4, 2, 4, 3, 4, 3, 2, 4, 4, 3]},
+                        {first_train: "17:51", delta: [3, 3, 4, 3, 3, 4, 2, 4, 3, 4, 3, 2, 4, 4]},
+                        {first_train: "18:40", delta: [3, 3, 3, 5, 4, 3, 5, [5, [4]], 5, 5, [2, [5, 7, 6, 5, 7]]]},
+                        {first_train: "20:42", delta: [6, 6, 5, 6, 7, [6, [6]], 7, 10, 9, 9, 9, 9]},
+                        {first_train: "22:51", delta: [10]}
+                    ],
+                    filters: [
+                        {plan: "回龙观东大街回库车", first_train: "07:51", skip_trains: 1, until: "08:47"},
+                        {plan: "回龙观东大街回库车", trains: ["09:02", "09:12", "09:32", "09:42", "10:02", "10:12", "16:49", "17:09"]},
+                        {plan: "回龙观东大街回库车", first_train: "17:21", skip_trains: 1, count: 4},
+                        {plan: "回龙观东大街回库车", first_train: "17:51", skip_trains: 1, count: 3},
+                        {plan: "回龙观东大街回库车", trains: ["18:29", "18:40"]},
+                        {plan: "回龙观东大街回库车", first_train: "18:58", skip_trains: 2, count: 3}
+                    ]
+                },
+                "双休日": {
+                    schedule: [
+                        {first_train: "05:06", delta: [[9, [10]], 8, 8, 5, 9, [14, [10, 10, 8]], 10, 9, 7, 5]},
+                        {first_train: "14:15", delta: [8, 5, 10, [9, [7, 8]], 6, [5, [9, 7, 7, 7]], 9, 9]},
+                        {first_train: "19:53", delta: [8, 7, 8, 6, 9, 7, 8, 7, 8, 7, 8, 8, 6, 8]},
+                        {first_train: "21:46", delta: [7, 8, 7, 8, 7, 10, 9, 9, 10]}
+                    ],
+                    filters: []
+                }
+            }
+        }
+    }
+}

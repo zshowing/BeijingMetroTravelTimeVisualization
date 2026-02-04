@@ -1,0 +1,208 @@
+// 数据截止2025/09/26，八通线，大兴线完全并入1号线和4号线描述
+// 大兴机场线时刻表 第6版+首班提前
+{
+    name: "大兴机场线",
+    color: "#0049A5",
+    badge: "DAE",
+    badge_icon: "local_airport",
+    aliases: ["Daxing Airport Express", "DAE", "Line 35"],
+    index: 35,
+    carriage_num: 7, // 7+1D, 1D为行李车不载客
+    carriage_type: "D",
+    design_speed: 160,
+    stations: [
+        {name: "大兴机场", aliases: ["Daxing Airport", "Daxing International Airport", "PKX"], badge_icon: "local_airport"},
+        {name: "大兴新城", dist: 25303},
+        {name: "草桥", dist: 13028}
+    ],
+    force_start: true,
+    train_routes: {
+        "进城": {
+            aliases: ["City-bound"],
+            "8节编组": {},
+            "4节编组": {carriage_num: 4}
+        },
+        "出城": {
+            aliases: ["Suburb-bound"],
+            reversed: true,
+            "8节编组": {},
+            "4节编组": {carriage_num: 4}
+        }
+    },
+    date_groups: {
+        "平日": {weekday: [1, 2, 3, 4, 6], aliases: ["Ordinary Days"]},
+        "重点保障": {weekday: [5], aliases: ["Key Guaranteed Periods"]},
+        "周日": {weekday: [7], aliases: ["Sundays"]}
+    },
+    timetable: {
+        "大兴机场": {
+            "进城": {
+                // 根据官方时刻表，调整+2min
+                "平日": {
+                    schedule: [
+                        {first_train: "06:00", delta: [10, [35, [9, 10, 9]], 14, 16]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:00", skip_trains: 2, until: "22:21"}
+                    ]
+                },
+                "重点保障": {
+                    schedule: [
+                        {first_train: "06:00", delta: [10, [108, [8]], 10, 9, 9, 10, 9, 9, 10, 9]},
+                        {first_train: "21:59", delta: [10, 10, 11, 15, 15]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:18", skip_trains: 2, until: "22:45"}
+                    ]
+                },
+                "周日": {
+                    schedule: [
+                        {first_train: "06:00", delta: [10, [35, [9, 10, 9]], 14, 15, 15, 15]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:00", skip_trains: 2, until: "22:21"}
+                    ]
+                }
+            },
+            "出城": {
+                // 以+14min计算
+                "平日": {
+                    schedule: [
+                        {first_train: "05:51", delta: [10, 9, 10, 10, [34, [10, 9, 9]], 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:51", skip_trains: 2, until: "22:41"}
+                    ]
+                },
+                "重点保障": {
+                    schedule: [
+                        {first_train: "05:51", delta: [10, 9, [106, [8]], 9, 9, 9, 9, 10, 9, 9, 10, 9, [7, [10]]]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:51", skip_trains: 2, until: "22:41"}
+                    ]
+                },
+                "周日": {
+                    schedule: [
+                        {first_train: "05:51", delta: [10, 9, 10, 10, [34, [10, 9, 9]], 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:51", skip_trains: 2, until: "22:41"}
+                    ]
+                }
+            }
+        },
+        "大兴新城": {
+            "进城": {
+                "平日": {
+                    schedule: [
+                        {first_train: "06:12", delta: [10, [35, [9, 10, 9]], 15, 15]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:12", skip_trains: 2, until: "22:33"}
+                    ]
+                },
+                "重点保障": {
+                    schedule: [
+                        {first_train: "06:12", delta: [10, [108, [8]], 9, 10, 9, 9, 10, 9, 9, 10, 10, 10, 10]},
+                        {first_train: "22:42", delta: [15, 15]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:30", skip_trains: 2, until: "22:57"}
+                    ]
+                },
+                "周日": {
+                    schedule: [
+                        {first_train: "06:12", delta: [10, [35, [9, 10, 9]], 15, 15, 15, 15]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:12", skip_trains: 2, until: "22:33"}
+                    ]
+                }
+            },
+            "出城": {
+                "平日": {
+                    schedule: [
+                        {first_train: "05:37", delta: [10, 9, 10, 10, [34, [10, 9, 9]], 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:37", skip_trains: 2, until: "22:27"}
+                    ]
+                },
+                "重点保障": {
+                    schedule: [
+                        {first_train: "05:37", delta: [10, 9, [106, [8]], 9, 9, 9, 9, 10, 9, 9, 10, 9, [7, [10]]]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:37", skip_trains: 2, until: "22:27"}
+                    ]
+                },
+                "周日": {
+                    schedule: [
+                        {first_train: "05:37", delta: [10, 9, 10, 10, [34, [10, 9, 9]], 10, 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:37", skip_trains: 2, until: "22:27"}
+                    ]
+                }
+            }
+        },
+        "草桥": {
+            "进城": {
+                // 以+9min计算
+                "平日": {
+                    schedule: [
+                        {first_train: "06:21", delta: [10, [35, [9, 10, 9]], 15, 15]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:21", skip_trains: 2, until: "22:42"}
+                    ]
+                },
+                "重点保障": {
+                    schedule: [
+                        {first_train: "06:21", delta: [10, [108, [8]], 9, 10, 9, 9, 10, 9, 9, 10, 10, 10, 10]},
+                        {first_train: "22:51", delta: [15, 15]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:39", skip_trains: 2, until: "23:06"}
+                    ]
+                },
+                "周日": {
+                    schedule: [
+                        {first_train: "06:21", delta: [10, [35, [9, 10, 9]], 15, 15, 15, 15]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "06:21", skip_trains: 2, until: "22:42"}
+                    ]
+                }
+            },
+            "出城": {
+                // 根据官方时刻表，调整+2min
+                "平日": {
+                    schedule: [
+                        {first_train: "05:30", delta: [10, 10, 9, 10, 10, [34, [9, 10, 9]], 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:30", skip_trains: 2, until: "22:20"}
+                    ]
+                },
+                "重点保障": {
+                    schedule: [
+                        {first_train: "05:30", delta: [10, 9, 9, [106, [8]], 9, 9, 10, 8, 9, 11, 9, 9, [7, [10]]]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:30", skip_trains: 2, until: "22:20"}
+                    ]
+                },
+                "周日": {
+                    schedule: [
+                        {first_train: "05:30", delta: [10, 10, 9, 10, 10, [34, [9, 10, 9]], 9, 10]}
+                    ],
+                    filters: [
+                        {plan: "4节编组", first_train: "05:30", skip_trains: 2, until: "22:20"}
+                    ]
+                }
+            }
+        }
+    }
+}
