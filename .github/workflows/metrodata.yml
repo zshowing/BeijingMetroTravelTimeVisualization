@@ -29,7 +29,7 @@ jobs:
         run: |
           # 定义路径变量
           SOURCE="temp_upstream/data/beijing/"
-          DEST="./data/beijing/"
+          DEST="data/beijing/"
           
           # 【核心对比命令】
           # diff -r 递归对比，-q 只报告是否有差异，--exclude 排除掉可能存在的 .git
