@@ -30,7 +30,8 @@ jobs:
           # 定义路径变量
           SOURCE="Beijing-Subway-Tools/data/Beijing"
           DEST="/data/Beijing/"
-          
+
+          ls
           # 确保目标文件夹存在
           mkdir -p $DEST
 
