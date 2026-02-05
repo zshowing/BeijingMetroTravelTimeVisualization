@@ -2,7 +2,8 @@ name: Update Metro Data
 
 on:
   workflow_dispatch: # 允许手动点击按钮运行
-
+  workflow_call: # 声明这是可以被调用的
+  
 jobs:
   build:
     runs-on: ubuntu-latest
