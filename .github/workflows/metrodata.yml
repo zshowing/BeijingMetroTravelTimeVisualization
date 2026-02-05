@@ -7,6 +7,8 @@ on:
 jobs:
   sync-and-compare:
     runs-on: ubuntu-latest
+    outputs:
+      has_changes: ${{ steps.compare.outputs.changed }} # 必须把结果传出给别的 Job 用
     steps:
       - name: Checkout My Repo
         uses: actions/checkout@v4
@@ -54,3 +56,8 @@ jobs:
           git add .
           git commit -m "Auto-sync: 检测到上游目录内容更新"
           git push
+
+  regenerate-data: # 第二个 Job，负责生成数据
+    needs: sync-and-compare # 声明：必须等第一个 Job 跑完
+    if: needs.sync-and-compare.outputs.has_changes == 'true' # 判断条件
+    uses: ./.github/workflows/datageneration.yml # 调用另一个文件
