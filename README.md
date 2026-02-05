@@ -8,3 +8,4 @@ Here's a screenshot(永泰庄 as the starting station):
 You can try it at [https://jon.observer/BeijingMetroTravelTimeVisualization/](https://jon.observer/BeijingMetroTravelTimeVisualization/)
 
 Note that the data I used here is from [Beijing-Subway-Tools](https://github.com/Mick235711/Beijing-Subway-Tools) under [MIT](https://github.com/Mick235711/Beijing-Subway-Tools/blob/main/LICENSE) license.
+Data will be automatically updated by Github Actions once there're any modification of [Beijing-Subway-Tools](https://github.com/Mick235711/Beijing-Subway-Tools).
