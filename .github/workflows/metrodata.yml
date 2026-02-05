@@ -1,4 +1,4 @@
-name: Data Sync and Update
+name: Data Sync
 on:
   schedule:
     - cron: '0 0 * * *' # 每天凌晨检查一次
@@ -57,20 +57,8 @@ jobs:
           git commit -m "Auto-sync: 检测到上游目录内容更新"
           git push
 
-      - name: Regenerate Data if needed
-        if: steps.compare.outputs.changed == 'true'
-        run: |
-          python -m pip install --upgrade pip
-          pip install questionary
-          pip install pyjson5
-          pip install pypinyin
-          pip install tabulate
-          pip install tqdm
-          pip install pillow
-          python generate_data.py
-
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          git add data.js
-          git commit -m "Auto-data-update: 自动更新地铁数据 data.js"
-          git push
+  regenerate-data: # 第二个 Job，负责生成数据
+    needs: sync-and-compare # 声明：必须等第一个 Job 跑完
+    if: needs.sync-and-compare.outputs.has_changes == 'true' # 判断条件
+    uses: ./.github/workflows/datageneration.yml # 调用另一个文件
+    secrets: inherit # 顺便把 Token 传给它
