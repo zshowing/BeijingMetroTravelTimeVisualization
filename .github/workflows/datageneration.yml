@@ -36,7 +36,6 @@ jobs:
 
       - name: Commit and Push
         run: |
-          git diff
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add data.js
