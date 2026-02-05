@@ -61,3 +61,4 @@ jobs:
     needs: sync-and-compare # 声明：必须等第一个 Job 跑完
     if: needs.sync-and-compare.outputs.has_changes == 'true' # 判断条件
     uses: ./.github/workflows/datageneration.yml # 调用另一个文件
+    secrets: inherit # 顺便把 Token 传给它
