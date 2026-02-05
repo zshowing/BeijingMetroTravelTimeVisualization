@@ -1,4 +1,4 @@
-name: Run Python Script
+name: Update Metro Data
 
 on:
   workflow_dispatch: # 允许手动点击按钮运行
