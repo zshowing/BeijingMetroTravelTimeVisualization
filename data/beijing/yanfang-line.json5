@@ -18,7 +18,7 @@
         {name: "星城", dist: 1929},
         {name: "阎村", dist: 1649},
         {name: "紫草坞", dist: 1210},
-        {name: "阎村东", dist: 1543}
+        {name: "阎村东", dist: 1541}
     ],
     train_routes: {
         "进城": {
