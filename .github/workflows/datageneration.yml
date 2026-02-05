@@ -1,0 +1,33 @@
+name: Run Python Script
+
+on:
+  workflow_dispatch: # 允许手动点击按钮运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 第一步：检出你的代码，否则虚拟机里没脚本文件
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 第二步：安装 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10' # 指定你需要的版本
+
+      # 第三步：安装依赖（如果有 requirements.txt）
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install questionary
+          pip install pyjson5
+          pip install pypinyin
+          pip install tabulate
+          pip install tqdm
+
+      # 第四步：执行你的脚本
+      - name: Run my script
+        run: python generate_data.py
