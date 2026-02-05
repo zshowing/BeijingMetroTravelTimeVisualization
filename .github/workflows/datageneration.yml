@@ -27,6 +27,7 @@ jobs:
           pip install pypinyin
           pip install tabulate
           pip install tqdm
+          pip install pillow
 
       # 第四步：执行你的脚本
       - name: Run my script
