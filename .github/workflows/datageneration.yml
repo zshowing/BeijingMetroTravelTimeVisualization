@@ -11,6 +11,8 @@ jobs:
       # 第一步：检出你的代码，否则虚拟机里没脚本文件
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MY_TOKEN }}
 
       # 第二步：安装 Python 环境
       - name: Set up Python
@@ -37,6 +39,6 @@ jobs:
           git diff
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add .
+          git add data.js
           git commit -m "Auto-data-update: 自动更新地铁数据 data.js"
           git push
