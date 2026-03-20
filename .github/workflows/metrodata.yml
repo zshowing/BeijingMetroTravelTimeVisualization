@@ -7,6 +7,8 @@ on:
 jobs:
   sync-and-compare:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 允许工作流向代码库写入/推送内容
     outputs:
       has_changes: ${{ steps.compare.outputs.changed }} # 必须把结果传出给别的 Job 用
     steps:
